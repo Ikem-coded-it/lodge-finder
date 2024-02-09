@@ -1,12 +1,11 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { inter } from '@/app/ui/font';
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Lodge Finder',
-  description: 'Welcome to Lodge Finder',
+  description: 'A platform that makes it easy to find accomodation in Ifite, Awka, Anambra State.',
+  keywords: ['Lodge', 'Ifite', 'Awka', 'unizik', 'Accomodation', 'Anambra', 'caretaker', 'lodge hunter', 'student'],
 }
 
 export default function RootLayout({

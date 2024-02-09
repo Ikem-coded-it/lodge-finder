@@ -6,6 +6,7 @@ export type Caretaker = {
   lastName: string;
   email: string;
   callNumber: string;
+  imageURL: string;
   whatsappNumber: string;
   managedLodges: string[];
 }
@@ -15,14 +16,18 @@ export type Lodge = {
   caretakerId: string;
   name: string;
   imageURL: string;
-  location: string;
-  junction: string;
+  state: string | undefined;
+  LGA: string | undefined;
+  town: string | undefined;
+  address: string | undefined;
+  postCode: number | undefined;
+  nearestJunction: "miracle junction" | "yahoo junction" | "next level junction" | "other";
 }
 
 export type LodgeFee = {
   id: string;
   lodgeId: string;
-  type: "sanitation" | "light";
+  type: "sanitation fee" | "light bill" | "security fee";
   period: "weekly" | "monthly" | "yearly";
   amount: number;
 }
@@ -32,9 +37,11 @@ export type Vacancy = {
   lodgeId: string;
   initialRent: number;
   subsequentRent: number;
-  bedSpaceImageURL: string;
-  kitchenSpaceImageURL: string;
-  balconyImageURL: string;
+  bedSpaceImageURL: string | undefined;
+  kitchenSpaceImageURL: string | undefined;
+  balconyImageURL: string | undefined;
   hasRunningWater: boolean;
   hasBackupPower: boolean;
+  hasSecurity: boolean;
+  additionalInfo: string;
 }
