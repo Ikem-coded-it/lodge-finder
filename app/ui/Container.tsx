@@ -13,7 +13,7 @@ export default function Container({ children, className, fluid }: Props) {
         {
           "container px-5 lg:px-8": !fluid,
         },
-        `mx-auto ${className}`
+        `${className}`
       )}
     >
       {children}

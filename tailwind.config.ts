@@ -17,24 +17,11 @@ const config: Config = {
       fontFamily: {
         visby: ["var(--font-visby)"],
         poppins: ["var(--font-poppins)"],
-      },
-
-      fontColors: {
-        light: {
-          default: "#555555"
-        },
-        dark: {
-          default: "#000000"
-        },
-        lightBlue: {
-          default: "#003B5C",
-        },
-        darkBlue: {
-          default: "#222222",
-        },
+        openSans: ["var(--font-open-sans)"]
       },
 
       colors: {
+      // Background colors
         lightBlue: {
           default: "#E6F6FF",
         },
@@ -46,6 +33,20 @@ const config: Config = {
         },
         lightGreyBg: {
           default: "#FAFAFA",
+        },
+
+        // Font colors
+        darkFont: {
+          default: "#000000"
+        },
+        lightFont: {
+          default: "#555555"
+        },
+        lightFontBlue: {
+          default: "#003B5C",
+        },
+        darkFontBlue: {
+          default: "#222222",
         },
       },
     },

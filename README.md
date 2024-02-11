@@ -7,7 +7,8 @@
 3. [Tech Stack](#tech-stack)
 4. [Folder Structure](#folder-structure)
 5. [Contributing](#contributing)
-6. [Pages and Functionality](#pages-and-functionality)
+6. [General Components](#general-components)
+7. [Pages and Functionality](#pages-and-functionality)
 
 ## INTRODUCTION
 
@@ -48,8 +49,17 @@
 - The `dev` is the branch for developing and testing the software
 - Are branches are to be created for new features or fixes, when you're adding your new feature, make a pull request to be merged into the `dev` branch.
 
+## GENERAL COMPONENTS
+
+General components such as button and container that is used through out the application is located in root of `@/app/ui`
+
+- **Button**:
+- **Container**: This is a `div` element with a defsult side padding. To render the component without the padding, set prop `fluid` to true on the component.
+
 ## PAGES AND FUNCTIONALITY
 
 This section explains the development and thought process behind each page of the website and their functionality. The location of the file for each page is added to the name using `/app` as the root.
 
 ### Home Page (/page.tsx)
+
+Main components located in `@/ui/home`
