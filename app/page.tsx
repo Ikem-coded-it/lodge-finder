@@ -1,11 +1,10 @@
-import Image from 'next/image';
 import Hero from "@/app/ui/Home/Hero";
-import { LoggedOutNav } from "@/app/ui/Nav";
+import { MainNav } from "@/app/ui/Nav/Desktop";
 
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
-      <LoggedOutNav/>
+      <MainNav/>
       <Hero/>
     </main>
   )

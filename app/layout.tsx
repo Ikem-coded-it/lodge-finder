@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Lodge Finder',
   description: 'A platform that makes it easy to find accomodation in Ifite, Awka, Anambra State.',
   keywords: ['Lodge', 'Ifite', 'Awka', 'unizik', 'Accomodation', 'Anambra', 'caretaker', 'lodge hunter', 'student'],
+  metadataBase: null
 }
 
 export default function RootLayout({

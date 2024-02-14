@@ -53,8 +53,18 @@
 
 General components such as button and container that is used through out the application is located in root of `@/app/ui`
 
-- **Button**:
-- **Container**: This is a `div` element with a defsult side padding. To render the component without the padding, set prop `fluid` to true on the component.
+1. **Button**: The general button component used through out the application.
+   Props Include:
+
+- `border`: To render the button with a border, eg. `<Button border/>`.
+- `bg`: To render button with the default background color, e.g. `<Button bg />`.
+- `text`: To give the button a text, e.g. `<Button text="Click me" />`.
+- `className`: For applying more specific styling using tailwind classes.
+
+2. **Nav**: The Nav folder contains three seperate files, the desktop nav, mobile nav, and a re-usable logo component used in all the navs.
+
+- Desktop.tsx contains the `MainNav` and `CaretakerDashboardNav`. `MainNav` is the general nav seen by all users. `CaretakerDashboardNav` is seen by only caretaker who is logged in.
+- Mobile.tsx contains `MainMenu` and the `CaretakerMenu`. The former is seen by all users on smaller screens while the latter is seen by only logged in caretakers on small screens.
 
 ## PAGES AND FUNCTIONALITY
 
@@ -62,4 +72,4 @@ This section explains the development and thought process behind each page of th
 
 ### Home Page (/page.tsx)
 
-Main components located in `@/ui/home`
+Its components are located in `@/ui/Home`
