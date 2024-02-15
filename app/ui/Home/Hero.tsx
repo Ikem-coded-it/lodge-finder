@@ -1,6 +1,6 @@
 import Container from "@/app/ui/Container";
 import { openSans } from "@/app/ui/font";
-import Image from "next/image";
+import Image from "@/app/ui/Image";
 import Button from "@/app/ui/Button";
 import Link from "next/link";
 import { IoLocationSharp } from "react-icons/io5";

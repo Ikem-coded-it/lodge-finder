@@ -15,7 +15,7 @@ const links = [
   {href: "/contact-us", text: "Contact us"},
 ]
 
-const navClasses = "bg-whiteBg-default fixed top-[0] left-[0] z-10 h-[80px] w-full px-[15px] md:px-[30px] pt-[10px] flex justify-between items-end"
+const navClasses = "bg-whiteBg-default fixed top-[0] left-[0] z-50 h-[80px] w-full px-[15px] md:px-[30px] pt-[10px] flex justify-between items-end"
 
 export function MainNav() {
   const pathname = usePathname()
