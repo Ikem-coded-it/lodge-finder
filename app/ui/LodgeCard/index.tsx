@@ -8,7 +8,7 @@ import Button from "@/app/ui/Button";
 // Used in the home page "Hot" section
 export default function VerticalLodgeCard() {
   return (
-    <div className="min-w-[390px] max-w-[390px] rounded-[8px] p-[20px] gap-[20px] bg-lightGreyBg-default lg:hover:scale-[1.02] transition-all duration-[.2s] ease-out">
+    <div className="min-w-[390px] md:min-w-[405px] max-w-[390px] rounded-[8px] p-[20px] gap-[20px] bg-lightGreyBg-default lg:hover:scale-[1.02] transition-all duration-[.2s] ease-out">
       <address className="font-[500] text-[11px] text-darkFont-default flex not-italic mb-[10px]">
         <CiLocationOn size="14px" color="#000000"/>
         7474+MP4, YAHOO STREET, IFITE, IFITE-AWKA, ANAMBRA STATE, NIGERIA.

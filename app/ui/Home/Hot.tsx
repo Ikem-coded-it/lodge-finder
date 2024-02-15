@@ -5,7 +5,7 @@ import VerticalLodgeCard from "@/app/ui/LodgeCard";
 
 export default function Hot() {
   return (
-    <Section>
+    <Section className="flex-col">
       <header className="w-full flex justify-between items-end mb-[20px]">
         <div className="flex flex-col items-start justify-end gap-[20px]">
           <h2 className="text-[30px] md:text-[35px] font-[800] text-darkFont-default m-0">

@@ -19,7 +19,7 @@ const floaterData = [
 export default function Hero() {
   return <header className="relative w-[95vw] min-h-[646px] max-h-[fit-content] mt-[100px] flex justify-center rounded-t-[30px] overflow-hidden">
 
-    <Container className="flex-1 bg-lightBlue-default pt-[90px] px-[60px] flex flex-col justify-start items-center gap-[50px] md:rounded-t-[30px] lg:rounded-t-none">
+    <Container className="flex-1 bg-lightBlue-default pt-[90px] px-[60px] flex flex-col justify-start items-center gap-[50px] rounded-t-[30px] lg:rounded-t-none">
       <h1 className={`text-[59px] font-extrabold font-['Open-Sans'] text-darkFont-default ${openSans.className}`}>
         Lodge hunting stress-free.
       </h1>
@@ -28,7 +28,7 @@ export default function Hero() {
         With Lodge Finder, finding the best lodge as a student is no longer difficult.
       </p>
 
-      <Container className="flex flex-col md:flex-row justify-start items-center gap-[6px]">
+      <Container className="flex flex-col md:flex-row justify-start items-center gap-[6px] mb-[20px] lg:mb-0">
         <Link href="/vacancies">
           <Button
           text="View vacancies"

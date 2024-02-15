@@ -1,6 +1,7 @@
 import Hero from "@/app/ui/Home/Hero";
 import { MainNav } from "@/app/ui/Nav/Desktop";
 import Hot from "@/app/ui/Home/Hot"
+import Features from "@/app/ui/Home/Features"
 
 export default function Page() {
   return (
@@ -8,6 +9,7 @@ export default function Page() {
       <MainNav/>
       <Hero/>
       <Hot/>
+      <Features/>
     </main>
   )
 }
