@@ -37,7 +37,7 @@ export function MainMenu({
       },
       "fixed z-20 top-0 flex md:hidden flex-col items-start gap-[70px] w-[100vw] h-[100vh] bg-whiteBg-default transition-all ease-in-out duration-[.5s]"
     )}>
-      <div className="w-full h-[80px] flex justify-between items-center px-[30px] pt-[10px]">
+      <div className="w-full h-[80px] flex justify-between items-center px-[15px] pt-[10px]">
         <LodgeFinderLogo/>
 
         <Button
@@ -125,7 +125,7 @@ export function CaretakerMenu({
       },
       "fixed z-20 top-0 flex md:hidden flex-col items-start gap-[50px] w-[100vw] h-[100vh] bg-whiteBg-default transition-all ease-in-out duration-[.5s]"
     )}>
-      <div className="w-full h-[80px] flex justify-between items-center px-[30px] pt-[10px]">
+      <div className="w-full h-[80px] flex justify-between items-center px-[15px] pt-[10px]">
         <LodgeFinderLogo/>
 
         <Button

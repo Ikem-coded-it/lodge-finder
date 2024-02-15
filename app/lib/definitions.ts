@@ -32,6 +32,11 @@ export type LodgeFee = {
   amount: number;
 }
 
+export type VacancyInterest = {
+  name: string;
+  message: string;
+}
+
 export type Vacancy = {
   id: string;
   lodgeId: string;
@@ -44,4 +49,6 @@ export type Vacancy = {
   hasBackupPower: boolean;
   hasSecurity: boolean;
   additionalInfo: string;
+  interests: VacancyInterest[];
+  fees: LodgeFee[];
 }
