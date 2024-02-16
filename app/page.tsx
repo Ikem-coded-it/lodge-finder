@@ -4,7 +4,8 @@ import Hot from "@/app/ui/Home/Hot";
 import Features from "@/app/ui/Home/Features";
 import OurStory from "@/app/ui/Home/OurStory";
 import Testimonial from "@/app/ui/Home/Testimonial/index";
-import Location from "@/app/ui/Home/Location"
+import Location from "@/app/ui/Home/Location";
+import Footer from "@/app/ui/Footer";
 
 export default function Page() {
   return (
@@ -16,6 +17,7 @@ export default function Page() {
       <OurStory/>
       <Testimonial/>
       <Location/>
+      <Footer/>
     </main>
   )
 }
