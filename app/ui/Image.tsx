@@ -15,8 +15,8 @@ export default function Image({
   height,
   alt,
   src,
-  fit,
-  position,
+  // fit,
+  // position,
   className
 }: ImageType) {
   return (
@@ -25,8 +25,8 @@ export default function Image({
     height={height}
     alt={alt}
     src={src}
-    objectFit={fit || "cover"}
-    objectPosition={position || "center"}
+    // objectFit={fit || "cover"}
+    // objectPosition={position || "center"}
     loading="lazy"
     className={className}
     />
