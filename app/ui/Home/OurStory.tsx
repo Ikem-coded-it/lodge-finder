@@ -1,7 +1,7 @@
 import Section from "@/app/ui/Home/Section";
-import Image from "@/app/ui/Image";
+import Image from "@/app/ui/components/Image";
 import Link from "next/link";
-import Button from "@/app/ui/Button";
+import Button from "@/app/ui/components/Button";
 
 export default function OurStory() {
   return(

@@ -1,6 +1,6 @@
 'use client';
 import LodgeFinderLogo from "@/app/ui/Nav/LodgeFinderLogo";
-import Button from "@/app/ui/Button";
+import Button from "@/app/ui/components/Button";
 import Link from "next/link";
 import clsx from "clsx";
 import React from "react";

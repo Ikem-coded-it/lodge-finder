@@ -1,9 +1,9 @@
 import { CiLocationOn } from "react-icons/ci";
 import ExtraInfo from "@/app/ui/LodgeCard/ExtraInfo";
-import Image from "@/app/ui/Image";
+import Image from "@/app/ui/components/Image";
 import VacancyDetails from "@/app/ui/LodgeCard/VacancyDetails";
 import Link from "next/link";
-import Button from "@/app/ui/Button";
+import Button from "@/app/ui/components/Button";
 
 // Used in the home page "Hot" section
 export default function VerticalLodgeCard() {

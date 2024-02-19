@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";
-import Image from "@/app/ui/Image";
+import Image from "@/app/ui/components/Image";
 
 export default function Card() {
   return (

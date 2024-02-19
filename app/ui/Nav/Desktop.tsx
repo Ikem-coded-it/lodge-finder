@@ -1,8 +1,8 @@
 'use client';
 
-import Container from "@/app/ui/Container";
+import Container from "@/app/ui/components/Container";
 import Link from 'next/link';
-import Button from "@/app/ui/Button";
+import Button from "@/app/ui/components/Button";
 import LodgeFinderLogo from "@/app/ui/Nav/LodgeFinderLogo";
 import { MainMenu, CaretakerMenu } from "@/app/ui/Nav/Mobile";
 import { useState } from "react";

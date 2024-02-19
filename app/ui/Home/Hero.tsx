@@ -1,7 +1,7 @@
-import Container from "@/app/ui/Container";
+import Container from "@/app/ui/components/Container";
 import { openSans } from "@/app/ui/font";
-import Image from "@/app/ui/Image";
-import Button from "@/app/ui/Button";
+import Image from "@/app/ui/components/Image";
+import Button from "@/app/ui/components/Button";
 import Link from "next/link";
 import { IoLocationSharp } from "react-icons/io5";
 import { LuCalendarDays } from "react-icons/lu";

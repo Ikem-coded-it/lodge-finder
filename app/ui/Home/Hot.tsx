@@ -1,5 +1,5 @@
 import Section from "@/app/ui/Home/Section";
-import Button from "@/app/ui/Button";
+import Button from "@/app/ui/components/Button";
 import Link from "next/link";
 import VerticalLodgeCard from "@/app/ui/LodgeCard";
 
