@@ -17,7 +17,7 @@ const floaterData = [
 ]
 
 export default function Hero() {
-  return <header className="relative w-[95vw] min-h-[646px] max-h-[fit-content] mt-[100px] flex justify-center rounded-t-[30px] overflow-hidden">
+  return <header className="relative w-[95vw] min-h-[646px] max-h-[fit-content] mt-[20px] flex justify-center rounded-t-[30px] overflow-hidden">
 
     <Container className="flex-1 bg-lightBlue-default pt-[90px] px-[60px] flex flex-col justify-start items-center gap-[50px] rounded-t-[30px] lg:rounded-t-none">
       <h1 className={`text-[59px] font-extrabold font-['Open-Sans'] text-darkFont-default ${openSans.className}`}>

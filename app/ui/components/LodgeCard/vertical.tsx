@@ -1,7 +1,7 @@
 import { CiLocationOn } from "react-icons/ci";
-import ExtraInfo from "@/app/ui/LodgeCard/ExtraInfo";
+import ExtraInfo from "@/app/ui/components/LodgeCard/ExtraInfo";
 import Image from "@/app/ui/components/Image";
-import VacancyDetails from "@/app/ui/LodgeCard/VacancyDetails";
+import VacancyDetails from "@/app/ui/components/LodgeCard/VacancyDetails";
 import Link from "next/link";
 import Button from "@/app/ui/components/Button";
 

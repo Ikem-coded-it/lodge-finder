@@ -6,7 +6,7 @@ export default function Main({
   children: React.ReactNode
 }) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start">
+    <main className="flex min-h-screen flex-col items-center justify-start pt-[80px]">
       {children}
     </main>
   )

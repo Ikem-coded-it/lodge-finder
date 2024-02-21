@@ -1,7 +1,7 @@
 import Section from "@/app/ui/Home/Section";
 import Button from "@/app/ui/components/Button";
 import Link from "next/link";
-import VerticalLodgeCard from "@/app/ui/LodgeCard";
+import VerticalLodgeCard from "@/app/ui/components/LodgeCard/vertical";
 
 export default function Hot() {
   return (

@@ -1,3 +1,4 @@
+import Main from "@/app/ui/components/Main";
 import Hero from "@/app/ui/Home/Hero";
 import { MainNav } from "@/app/ui/Nav/Desktop";
 import Hot from "@/app/ui/Home/Hot";
@@ -9,7 +10,7 @@ import Footer from "@/app/ui/components/Footer";
 
 export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start">
+    <Main>
       <MainNav/>
       <Hero/>
       <Hot/>
@@ -18,6 +19,6 @@ export default function Page() {
       <Testimonial/>
       <Location/>
       <Footer/>
-    </main>
+    </Main>
   )
 }
