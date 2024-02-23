@@ -4,6 +4,7 @@ import Image from "@/app/ui/components/Image";
 import VacancyDetails from "@/app/ui/components/LodgeCard/VacancyDetails";
 import Link from "next/link";
 import Button from "@/app/ui/components/Button";
+import SliderFrame from "@/app/ui/components/SliderFrame"
 
 // Used in the home page "Hot" section
 export default function VerticalLodgeCard() {
@@ -19,9 +20,9 @@ export default function VerticalLodgeCard() {
       </h3>
 
       {/* Extra Info Slider */}
-      <div className="w-full h-[fit-content] overflow-scroll flex justify-start items-center no-scrollbar mb-[20px]">
+      <SliderFrame>
         <ExtraInfo/>
-      </div>
+      </SliderFrame>
 
       {/* Lodge Building Picture */}
       <Image
@@ -35,35 +36,40 @@ export default function VerticalLodgeCard() {
       <VacancyDetails/>
 
       {/* Rent */}
-      <div className="w-full h-fit flex justify-between items-center">
-        <Link href="/">
-          <Button
-          text="See more"
-          bg
-          className="w-[89px] h-[41px]"
-          />
-        </Link>
+      <SliderFrame className="w-[310px] md:w-full mb-0 py-2">
+        <div className="w-fit h-fit flex justify-between items-center gap-[80px]">
+          <Link href="/">
+            <Button
+            text="See more"
+            bg
+            className="w-[89px] h-[41px]"
+            />
+          </Link>
 
-        <div className="flex justify-start items-center gap-[20px]">
-          <div className="w-[82px] h-[39px] flex flex-col justify-start items-start gap-[8px]">
-            <h4 className="text-[10px] text-lightFont-default">
-              INITIAL RENT
-            </h4>
-            <p className="text-[16px] font-[800] text-darkFont-default">
-              N150000
-            </p>
-          </div>
+          <div className="flex justify-start items-center gap-[20px]">
+            <div className="w-[82px] h-[39px] flex flex-col justify-start items-start gap-[8px]">
+              <h4 className="text-[10px] text-lightFont-default">
+                INITIAL RENT
+              </h4>
+              <p className="text-[16px] font-[800] text-darkFont-default">
+                N150000
+              </p>
+            </div>
 
-          <div className="w-[100px] h-[39px] flex flex-col justify-start items-start gap-[8px]">
-            <h4 className="text-[10px] text-lightFont-default">
-              SUBSEQUENT RENT
-            </h4>
-            <p className="text-[16px] font-[800] text-darkFont-default">
-              N130000
-            </p>
+            <div className="w-[120px] h-[39px] flex flex-col justify-start items-start gap-[8px]">
+              <h4 className="text-[10px] text-lightFont-default">
+                SUBSEQUENT RENT
+              </h4>
+              <p className="text-[16px] font-[800] text-darkFont-default">
+                N130000
+                <span className="font-[500] text-[9px] text-lightFont-default">
+                  /per year
+                </span>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </SliderFrame>
     </div>
   )
 }

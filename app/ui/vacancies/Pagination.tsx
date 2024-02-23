@@ -3,9 +3,9 @@ import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 
 export default function Pagination() {
   return (
-    <div className="w-[200px] h-[556px] flex justify-center items-center">
-      <div className="w-[88px] h-[498px] flex flex-col justify-between items-center gap-[35px]">
-        <h3 className="text-[11px] text-lightFont-default text-center w-full">
+    <div className="w-full lg:w-[200px] h-[120px] lg:h-[556px] flex justify-center items-center px-[20px] lg:px-0">
+      <div className="w-full lg:w-[88px] h-full lg:h-[498px] flex flex-col justify-between items-start lg:items-center gap-[15px] lg:gap-[35px]">
+        <h3 className="text-[15px] lg:text-[11px] text-lightFont-default text-left lg:text-center w-full">
           PAGES
         </h3>
 
@@ -27,7 +27,7 @@ const buttonsData = [
 
 function PaginationButtons() {
   return (
-    <div className="flex flex-col h-[388px] w-full justify-between items-center">
+    <div className="flex lg:flex-col h-fit lg:h-[388px] w-full justify-start lg:justify-between items-start lg:items-center gap-[15px]">
       {
         buttonsData.map((button, index) => {
           return (
@@ -43,12 +43,12 @@ function PaginationButtons() {
 
 function ArrowButtons() {
   return (
-    <div className="h-fit w-full mt-[15px] flex justify-between items-center">
-      <button className="w-[29px] h-[30px] border-[1px] border-darkFontBlue-default bg-lightBlue-default flex justify-center items-center">
+    <div className="h-fit w-[100px] lg:w-full lg:mt-[15px] flex justify-between items-center">
+      <button className="w-[29px] h-[30px] bg-lightBlue-default flex justify-center items-center rounded-[50%]">
         <RxCaretLeft size="20px" color="#000000"/>
       </button>
 
-      <button className="w-[29px] h-[30px] border-[1px] border-darkFontBlue-default bg-lightBlue-default flex justify-center items-center">
+      <button className="w-[29px] h-[30px] bg-lightBlue-default flex justify-center items-center rounded-[50%]">
         <RxCaretRight size="20px" color="#000000"/>
       </button>
     </div>

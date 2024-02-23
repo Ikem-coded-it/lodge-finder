@@ -6,10 +6,13 @@ import { RxCaretLeft } from "react-icons/rx";
 import { RxCaretRight } from "react-icons/rx";
 import Card from "@/app/ui/Home/Testimonial/Card";
 import { useState, useEffect, useRef } from "react";
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
 
 export default function Testimonial() {
   const [translateValue, setTranslateValue] = useState(0);
   const sliderRef : any = useRef();
+  const pathname = usePathname();
 
   useEffect(() => {
     sliderRef.current.style.transform = `translateX(${translateValue}vw)`;
@@ -32,7 +35,12 @@ export default function Testimonial() {
   }
 
   return (
-    <Section className="mt-[270px] md:mt-[25px] relative overflow-scroll no-scrollbar">
+    <Section className={clsx(
+      {
+        "mt-[290px]": pathname === "/"
+      },
+      "md:mt-[25px] relative overflow-hidden no-scrollbar"
+    )}>
       <div ref={sliderRef} className="h-fit w-full flex justify-start items-center transition-all duration-[.3s] ease-out">
         <Card/>
         <Card/>
