@@ -1,6 +1,6 @@
 import { CiLocationOn } from "react-icons/ci";
 import ExtraInfo from "@/app/ui/components/LodgeCard/ExtraInfo";
-import Image from "@/app/ui/components/Image";
+import LodgeImageSlider from "@/app/ui/components/LodgeCard/LodgeImageSlider";
 import VacancyDetails from "@/app/ui/components/LodgeCard/VacancyDetails";
 import Link from "next/link";
 import Button from "@/app/ui/components/Button";
@@ -9,7 +9,7 @@ import SliderFrame from "@/app/ui/components/SliderFrame"
 // Used in the home page "Hot" section
 export default function VerticalLodgeCard() {
   return (
-    <div className="min-w-[390px] md:min-w-[405px] max-w-[390px] rounded-[8px] p-[20px] gap-[20px] bg-lightGreyBg-default lg:hover:scale-[1.02] transition-all duration-[.2s] ease-out">
+    <div className="min-w-[390px] md:min-w-[405px] max-w-[390px] rounded-[8px] p-[20px] gap-[20px] bg-lightGreyBg-default lg:hover:scale-[1.01] transition-all duration-[.2s] ease-out">
       <address className="font-[500] text-[11px] text-darkFont-default flex not-italic mb-[10px]">
         <CiLocationOn size="14px" color="#000000"/>
         7474+MP4, YAHOO STREET, IFITE, IFITE-AWKA, ANAMBRA STATE, NIGERIA.
@@ -25,13 +25,7 @@ export default function VerticalLodgeCard() {
       </SliderFrame>
 
       {/* Lodge Building Picture */}
-      <Image
-      alt={`Depiction of Nwajiofor Lodge`}
-      src="/lodge.png"
-      width={350}
-      height={340}
-      className="min-w-full h-[340px] rounded-[10px] mb-[20px]"
-      />
+      <LodgeImageSlider/>
 
       <VacancyDetails/>
 
@@ -40,7 +34,7 @@ export default function VerticalLodgeCard() {
         <div className="w-fit h-fit flex justify-between items-center gap-[80px]">
           <Link href="/">
             <Button
-            text="See more"
+            text="Interested"
             bg
             className="w-[89px] h-[41px]"
             />

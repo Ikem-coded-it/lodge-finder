@@ -4,7 +4,8 @@ import Image from "@/app/ui/components/Image";
 import VacancyDetails from "@/app/ui/components/LodgeCard/VacancyDetails";
 import Link from "next/link";
 import Button from "@/app/ui/components/Button";
-import SliderFrame from "@/app/ui/components/SliderFrame"
+import SliderFrame from "@/app/ui/components/SliderFrame";
+import LodgeImageSlider from "@/app/ui/components/LodgeCard/LodgeImageSlider";
 
 // Used in the vacancies page
 export default function HorizontalLodgeCard() {
@@ -25,14 +26,8 @@ export default function HorizontalLodgeCard() {
       </SliderFrame>
 
       <div className="flex flex-col lg:flex-row justify-start lg:justify-between items-start gap-[15px] mb-[20px]">
-        {/* Lodge Building Picture */}
-        <Image
-        alt={`Depiction of Nwajiofor Lodge`}
-        src="/lodge.png"
-        width={400}
-        height={380}
-        className="min-w-full md:min-w-[500px] lg:min-w-[400px] lg:max-w-[400px] h-[340px] lg:h-[380px] rounded-[10px] mb-[20px]"
-        />
+        {/* Lodge Picture slider */}
+        <LodgeImageSlider className="min-w-full md:min-w-[500px] lg:min-w-[400px] lg:max-w-[400px] h-[340px] lg:h-[380px]"/>
 
         <div className="flex flex-col justify-start items-start flex-1 h-[288px]">
           <VacancyDetails/>

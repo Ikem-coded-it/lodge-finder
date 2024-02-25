@@ -1,13 +1,14 @@
-import {default as NextImage} from "next/image";
+import {default as NextImage, StaticImageData} from "next/image";
 
 type ImageType = {
   width: number,
   height: number,
   alt: string,
-  src: string,
+  src: string | StaticImageData,
   fit?: string,
   position?: string,
-  className?: string
+  className?: string,
+  key?: any
 }
 
 export default function Image({
