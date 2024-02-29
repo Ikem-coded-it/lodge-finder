@@ -3,8 +3,8 @@
 import Container from "@/app/ui/components/Container";
 import Link from 'next/link';
 import Button from "@/app/ui/components/Button";
-import LodgeFinderLogo from "@/app/ui/Nav/LodgeFinderLogo";
-import { MainMenu, CaretakerMenu } from "@/app/ui/Nav/Mobile";
+import LodgeFinderLogo from "@/app/ui/components/Nav/LodgeFinderLogo";
+import { MainMenu, CaretakerMenu } from "@/app/ui/components/Nav/Mobile";
 import { useState } from "react";
 import { usePathname } from 'next/navigation';
 import clsx from "clsx";
@@ -54,7 +54,7 @@ export function MainNav() {
           />
         </Link>
 
-        <Link href="/auth/signup">
+        <Link href="/auth/proceed">
           <Button 
           text="Sign up"
           bg

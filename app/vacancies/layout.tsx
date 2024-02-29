@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import Main from "@/app/ui/components/Main";
 import type { Metadata } from 'next'
-import { MainNav } from "@/app/ui/Nav/Desktop";
+import Nav from "@/app/ui/components/Nav";
 import SearchBar from "@/app/ui/vacancies/SearchBar";
 import Testimonial from "@/app/ui/Home/Testimonial/index";
 import Location from "@/app/ui/Home/Location";
@@ -18,7 +18,7 @@ export default function Layout({
 }) {
   return (
     <Main>
-      <MainNav/>
+      <Nav/>
       <SearchBar/>
       {children}
       <Testimonial/>

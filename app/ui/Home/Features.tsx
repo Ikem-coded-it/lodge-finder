@@ -34,7 +34,7 @@ export default function Features() {
           We prioritize our users experience and satisfaction. Are you an agent with lodges that students would love? Sign up now as a caretaker to get the publicity you need. 
         </p>
 
-        <Link href="/auth/signup">
+        <Link href="/auth/proceed">
           <Button
           text="Sign up Now"
           bg

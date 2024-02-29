@@ -1,5 +1,5 @@
 'use client';
-import LodgeFinderLogo from "@/app/ui/Nav/LodgeFinderLogo";
+import LodgeFinderLogo from "@/app/ui/components/Nav/LodgeFinderLogo";
 import Button from "@/app/ui/components/Button";
 import Link from "next/link";
 import clsx from "clsx";
@@ -77,11 +77,15 @@ export function MainMenu({
           />
         </Link>
 
-        <Link href="/auth/signup">
+        <Link href="/auth/proceed">
           <Button 
           text="Sign up"
           bg
           className="w-[77px] h-[40px]"
+          border={() => {
+            return pathname === "/auth/proceed" || pathname === "/auth/signup" ?
+            true : false
+          }}
           />
         </Link>
       </div>

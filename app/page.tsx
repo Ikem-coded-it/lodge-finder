@@ -1,6 +1,6 @@
 import Main from "@/app/ui/components/Main";
 import Hero from "@/app/ui/Home/Hero";
-import { MainNav } from "@/app/ui/Nav/Desktop";
+import Nav from "@/app/ui/components/Nav";
 import Hot from "@/app/ui/Home/Hot";
 import Features from "@/app/ui/Home/Features";
 import OurStory from "@/app/ui/Home/OurStory";
@@ -11,7 +11,7 @@ import Footer from "@/app/ui/components/Footer";
 export default function Page() {
   return (
     <Main>
-      <MainNav/>
+      <Nav/>
       <Hero/>
       <Hot/>
       <Features/>

@@ -12,7 +12,6 @@ export default function LodgeFinderLogo() {
           height={60}
           className="h-[70px] w-[100px]"
           alt="Lodge finder's logo that's also a link to the homepage"
-          objectFit="cover"
         />
       </Link>
     </Container>

@@ -8,7 +8,6 @@ export type Caretaker = {
   callNumber: string;
   imageURL: string;
   whatsappNumber: string;
-  managedLodges: string[];
 }
 
 export type Lodge = {
