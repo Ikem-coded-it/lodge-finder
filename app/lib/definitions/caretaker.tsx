@@ -18,3 +18,8 @@ export interface Caretaker  {
   imageURL?: string;
   whatsappNumber: number;
 }
+
+export interface CaretakerLogin {
+  email: string;
+  password: string;
+}

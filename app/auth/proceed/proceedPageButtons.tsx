@@ -18,7 +18,10 @@ export default function ProceedPageButtons() {
         <p className="text-[12px] font-[500] text-darkFont-default">
           Already have an account?
           <span className="font-[800]">
-            <Link href="/auth/login">
+            <Link
+            href="/auth/login"
+            className="text-blue-700"
+            >
               {" " + "Login instead"}
             </Link>
           </span>
