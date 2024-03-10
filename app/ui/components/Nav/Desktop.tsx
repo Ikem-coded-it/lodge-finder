@@ -77,14 +77,62 @@ export function MainNav() {
   )
 }
 
-export function CaretakerDashboardNav() {
+export function CaretakerNav() {
+  const pathname = usePathname()
+  const [openMenu, setOpenMenu] = useState(false);
+
   return (
-    <nav>
-      <Container className={`${navClasses}`}>
-        <Link href="/">
-          
+    <nav className={`${navClasses}`}>
+      <LodgeFinderLogo/>
+
+      <ul className="hidden lg:flex h-full w-[287px] justify-evenly items-center">
+        {
+          links.map(link => {
+            return(
+              <li key={link.text} className="list-none text-darkFontBlue-default">
+                <Link href={link.href} className="flex flex-col gap-[5px] text-[13px]">
+                  {link.text}
+                  <div className={clsx(
+                    'active h-[3px] w-[37px]',
+                    {
+                      'bg-darkBlue-default': pathname === link.href
+                    }
+                  )}
+                  />
+                </Link>
+              </li>
+            )
+          })
+        }
+      </ul>
+
+      <Container fluid className="hidden lg:flex h-full w-[187px] justify-between items-center">
+        <Link href="/auth/login">
+          <Button 
+          text="Login"
+          className="w-[77px] h-[40px]"
+          />
+        </Link>
+
+        <Link href="/auth/proceed">
+          <Button 
+          text="Sign up"
+          bg
+          className="w-[77px] h-[40px]"
+          />
         </Link>
       </Container>
+
+      <div className="lg:hidden h-full w-[fit-content] flex justify-center items-center">
+        <Button
+        text="Menu"
+        bg
+        className="h-[37px] w-[78px]"
+        onClick={() => setOpenMenu(true)}
+        />
+      </div>
+
+      <CaretakerMenu isOpen={openMenu} close={() => setOpenMenu(false)} pathname={pathname}/>
     </nav>
   )
 }

@@ -19,7 +19,9 @@ export default function Layout({
   return (
     <Main>
       <Nav/>
-      <SearchBar/>
+      <section className="fixed top-[80px] z-20 left-0 w-full flex justify-start items-center px-[10px] md:px-[30px] py-[20px] h-[81px] bg-whiteBg-default">
+        <SearchBar button/>
+      </section>
       {children}
       <Testimonial/>
       <Location/>
