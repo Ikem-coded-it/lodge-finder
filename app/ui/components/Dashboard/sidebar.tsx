@@ -44,12 +44,14 @@ export default function Sidebar() {
             Help
             </Link>
 
-            <Button
-            text="Logout"
-            className="w-[77px] h-[37px] text-red-400 gap-[10px]"
-            >
-            <SlLogout color="red" size="20px" />
-            </Button>
+            <a href="/api/auth/logout">
+                <Button
+                text="Logout"
+                className="w-[77px] h-[37px] text-red-400 gap-[10px]"
+                >
+                    <SlLogout color="red" size="20px" />
+                </Button>
+            </a>
         </div>
         </section>
     )

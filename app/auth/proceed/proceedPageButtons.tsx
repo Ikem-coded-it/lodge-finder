@@ -7,23 +7,23 @@ export default function ProceedPageButtons() {
   return(
     <>
       <div className="w-full h-fit flex flex-col justify-start items-center gap-[40px]">
-        <Link href="/auth/signup">
+        <a href="/api/auth/signup">
           <Button
-          text="Proceed to create profile"
+          text="Proceed to sign up"
           bg
           className="w-[200px] h-[35px]"
           />
-        </Link>
+        </a>
 
         <p className="text-[12px] font-[500] text-darkFont-default">
           Already have an account?
           <span className="font-[800]">
-            <Link
-            href="/auth/login"
+            <a
+            href="/api/auth/login"
             className="text-blue-700"
             >
               {" " + "Login instead"}
-            </Link>
+            </a>
           </span>
         </p>
 

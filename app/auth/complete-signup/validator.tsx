@@ -14,23 +14,23 @@ export const validateCaretakerSignup = (values: CaretakerSignup) => {
     errors.lastName = 'Must be 3 characters and above';
   }
 
-  if (!values.email) {
-    errors.email = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
-  }
+  // if (!values.email) {
+  //   errors.email = 'Required';
+  // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+  //   errors.email = 'Invalid email address';
+  // }
 
-  if (!values.password) {
-    errors.password = 'Required';
-  } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(values.password)) {
-    errors.password = 'Must contain an uppercase letter, lowercase letter and a number';
-  }
+  // if (!values.password) {
+  //   errors.password = 'Required';
+  // } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(values.password)) {
+  //   errors.password = 'Must contain an uppercase letter, lowercase letter and a number';
+  // }
 
-  if (!values.confirmPassword) {
-    errors.confirmPassword = 'Required';
-  } else if (values.confirmPassword !== values.password) {
-    errors.confirmPassword = 'Must match password';
-  }
+  // if (!values.confirmPassword) {
+  //   errors.confirmPassword = 'Required';
+  // } else if (values.confirmPassword !== values.password) {
+  //   errors.confirmPassword = 'Must match password';
+  // }
 
   if (!values.whatsappNumber) {
     errors.whatsappNumber = 'Required';

@@ -4,8 +4,11 @@ import SearchBar from "@/app/ui/vacancies/SearchBar";
 import { GoBell } from "react-icons/go";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 export default function DashboardVacanciesHeader() {
+    const { user } = useUser();
+
     const pathname = usePathname();
     return(
         <div className="h-[50px] lg:h-[81px] w-full bg-whiteBg-default flex justify-end items-center gap-4 md:gap-24 lg:gap-44 pr-6 absolute top-[80px] lg:top-0 right-0">
@@ -18,13 +21,13 @@ export default function DashboardVacanciesHeader() {
                 </div>
 
                 {
-                    pathname !== "/dashboard/profile" && (
+                    pathname !== "/dashboard/profile" && user && (
                         <Image
-                        src="/person.png"
+                        src={user?.picture ?? "/vercel.svg"}
                         alt="profile"
                         width={44}
                         height={32}
-                        className="w-[20px] h-[20px] lg:w-[44px] lg:h-8 rounded-[50%]"
+                        className="w-[20px] h-[20px] lg:w-[34px] lg:h-8 rounded-[50%]"
                         />
                     )
                 }

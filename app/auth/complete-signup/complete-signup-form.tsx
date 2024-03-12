@@ -9,15 +9,15 @@ import DynamicInputField from "@/app/ui/components/Form/input";
 import InputContainer from "@/app/ui/components/Form/input-container";
 import Button from "@/app/ui/components/Button";
 
-const SignupForm = () => {
+const CompleteSignupForm = () => {
 
   const formik = useFormik({
     initialValues: {
       firstName: '',
       lastName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
+      // email: '',
+      // password: '',
+      // confirmPassword: '',
       callNumber: '',
       whatsappNumber: '',
     } as CaretakerSignup,
@@ -64,7 +64,7 @@ const SignupForm = () => {
         />
       </InputContainer>
       
-      <DynamicInputField
+      {/* <DynamicInputField
       type="email"
       name="email"
       label="Email"
@@ -75,9 +75,9 @@ const SignupForm = () => {
       error={formik.errors.email}
       touched={formik.touched.email}
       className="w-full"
-      />
+      /> */}
 
-      <InputContainer>
+      {/* <InputContainer>
         <DynamicInputField
         type="password"
         name="password"
@@ -101,7 +101,7 @@ const SignupForm = () => {
         touched={formik.touched.confirmPassword}
         className="w-full md:w-1/2"
         />
-      </InputContainer>
+      </InputContainer> */}
 
       <InputContainer>
         <DynamicInputField
@@ -141,5 +141,5 @@ const SignupForm = () => {
   )
 }
 
-export default SignupForm;
+export default CompleteSignupForm;
 

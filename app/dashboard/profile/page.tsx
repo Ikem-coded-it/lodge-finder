@@ -1,11 +1,11 @@
 import Main from "@/app/ui/components/Main";
-import {  withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 // protected page route
 export default withPageAuthRequired (async function Page() {
     return(
         <Main>
-            <div>Your vacancies</div>
+            <h1>My profile</h1>
         </Main>
     )
-}, { returnTo: '/dashboard/vacancies' })
+}, { returnTo: '/dashboard/profile' })

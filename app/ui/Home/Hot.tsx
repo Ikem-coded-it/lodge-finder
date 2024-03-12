@@ -2,6 +2,7 @@ import Section from "@/app/ui/Home/Section";
 import Button from "@/app/ui/components/Button";
 import Link from "next/link";
 import VerticalLodgeCard from "@/app/ui/components/LodgeCard/vertical";
+import { VerticalLodgeCardSkeleton } from  "@/app/ui/components/Skeletons/lodgecard";
 
 export default function Hot() {
   return (

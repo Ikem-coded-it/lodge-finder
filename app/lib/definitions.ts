@@ -25,7 +25,7 @@ export type Lodge = {
 
 export type LodgeFee = {
   id: string;
-  lodgeId: string;
+  vacancyId: string;
   type: "sanitation fee" | "light bill" | "security fee";
   period: "weekly" | "monthly" | "yearly";
   amount: number;
@@ -38,12 +38,11 @@ export type VacancyInterest = {
 
 export type Vacancy = {
   id: string;
-  lodgeId: string;
+  lodgeName: string,
+  lodgeAddress: string,
   initialRent: number;
   subsequentRent: number;
-  bedSpaceImageURL: string | undefined;
-  kitchenSpaceImageURL: string | undefined;
-  balconyImageURL: string | undefined;
+  images: string[],
   hasRunningWater: boolean;
   hasBackupPower: boolean;
   hasSecurity: boolean;

@@ -67,12 +67,12 @@ export function MainMenu({
       </ul>
 
       <div className="flex flex-col w-full gap-[40px] items-start justify-start px-[50px]">
-        <Link href="/auth/login">
+        <a href="/api/auth/login">
           <Button 
           text="Login"
           className="w-[77px] h-[37px]"
           />
-        </Link>
+        </a>
 
         <Link href="/auth/proceed">
           <Button 
@@ -157,12 +157,14 @@ export function CaretakerMenu({
           Help
         </Link>
 
-        <Button
-        text="Logout"
-        className="w-[77px] h-[37px] text-red-400 gap-[10px]"
-        >
-          <SlLogout color="red" size="20px" />
-        </Button>
+        <a href="/api/auth/logout">
+          <Button
+          text="Logout"
+          className="w-[77px] h-[37px] text-red-400 gap-[10px]"
+          >
+            <SlLogout color="red" size="20px" />
+          </Button>
+        </a>
       </div>
     </section>
   )

@@ -47,12 +47,12 @@ export function MainNav() {
       </ul>
 
       <Container fluid className="hidden md:flex h-full w-[187px] justify-between items-center">
-        <Link href="/auth/login">
+        <a href="/api/auth/login">
           <Button 
           text="Login"
           className="w-[77px] h-[40px]"
           />
-        </Link>
+        </a>
 
         <Link href="/auth/proceed">
           <Button 
@@ -107,18 +107,18 @@ export function CaretakerNav() {
       </ul>
 
       <Container fluid className="hidden lg:flex h-full w-[187px] justify-between items-center">
-        <Link href="/auth/login">
+        <a href="/api/auth/logout">
           <Button 
-          text="Login"
+          text="Logout"
           className="w-[77px] h-[40px]"
           />
-        </Link>
+        </a>
 
-        <Link href="/auth/proceed">
+        <Link href="/dashboard/vacancies">
           <Button 
-          text="Sign up"
+          text="Dashboard"
           bg
-          className="w-[77px] h-[40px]"
+          className="w-[100px] h-[40px]"
           />
         </Link>
       </Container>
