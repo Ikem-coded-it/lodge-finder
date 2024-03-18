@@ -24,12 +24,12 @@ export default async function RootLayout({
   return (
     <>
       <HideNavInDesktop/>
-      <div  className="flex min-h-[100vh] w-[99.8vw]">
-        <aside className="h-fit w-fit hidden lg:block">
+      <div  className="flex min-h-[100vh] w-[99.8vw] relative">
+        <aside className="h-fit w-fit hidden lg:block z-[50]">
             <Sidebar/>
         </aside>
 
-        <section className="grow h-full bg-lightGreyBg-default relative pt-[80px]">
+        <section className="grow min-h-screen max-h-screen bg-lightGreyBg-default pt-[80px] lg:pt-0 px-[10px] md:px-[30px] overflow-y-auto">
             <DashboardVacanciesHeader/>
             {children}
         </section>

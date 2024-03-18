@@ -11,7 +11,7 @@ export default function DashboardVacanciesHeader() {
 
     const pathname = usePathname();
     return(
-        <div className="h-[50px] lg:h-[81px] w-full bg-whiteBg-default flex justify-end items-center gap-4 md:gap-24 lg:gap-44 pr-6 absolute top-[80px] lg:top-0 right-0">
+        <div className="h-[50px] lg:h-[81px] w-full bg-whiteBg-default flex justify-end items-center gap-4 md:gap-24 lg:gap-44 pr-6 absolute top-[80px] lg:top-0 right-0 z-[40]">
             <SearchBar/>
 
             <div className="h-fit flex gap-2">

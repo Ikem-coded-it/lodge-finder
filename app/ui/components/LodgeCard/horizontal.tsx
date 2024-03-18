@@ -1,16 +1,28 @@
 import { CiLocationOn } from "react-icons/ci";
 import ExtraInfo from "@/app/ui/components/LodgeCard/ExtraInfo";
-import Image from "@/app/ui/components/Image";
 import VacancyDetails from "@/app/ui/components/LodgeCard/VacancyDetails";
 import Link from "next/link";
 import Button from "@/app/ui/components/Button";
 import SliderFrame from "@/app/ui/components/SliderFrame";
 import LodgeImageSlider from "@/app/ui/components/LodgeCard/LodgeImageSlider";
+import cn from "@/app/lib/utils/cn";
+import { FaMinus } from "react-icons/fa";
 
 // Used in the vacancies page
-export default function HorizontalLodgeCard() {
+export default function HorizontalLodgeCard({
+  className,
+  type = "vacancies_page"
+}:{
+  className?: string
+  type?: "dashboard" | "vacancies_page"
+}) {
+
+  const mergedClasses = cn(
+    "min-w-full md:min-w-[405px] lg:max-w-[990px] rounded-[8px] p-[20px] gap-[20px] bg-lightGreyBg-default relative",
+    className
+  )
   return (
-    <div className="min-w-full md:min-w-[405px] lg:max-w-[990px] rounded-[8px] p-[20px] gap-[20px] bg-lightGreyBg-default">
+    <div className={mergedClasses}>
       <address className="font-[500] text-[11px] text-darkFont-default flex not-italic mb-[10px]">
         <CiLocationOn size="14px" color="#000000"/>
         7474+MP4, YAHOO STREET, IFITE, IFITE-AWKA, ANAMBRA STATE, NIGERIA.
@@ -33,7 +45,10 @@ export default function HorizontalLodgeCard() {
           <VacancyDetails/>
 
           {/* Rent */}
-          <SliderFrame className="w-[300px] md:w-full mb-0 py-2">
+          <SliderFrame className={cn(
+            "w-[300px] md:w-full mb-0 py-2",
+            {"mb-10 lg:mb-0": type == "dashboard"}
+          )}>
             <div className="w-fit h-fit flex justify-between items-center gap-[80px]">
               <Link href="/">
                 <Button
@@ -69,6 +84,17 @@ export default function HorizontalLodgeCard() {
           </SliderFrame>
         </div>
       </div>
+
+      <button className={cn(
+        "flex h-16 w-16 justify-center items-center gap-3 text-[#f87171] absolute bottom-0 right-6",
+        {"hidden": type == "vacancies_page"}
+      )}>
+        <div className="h-fit w-fit p-1 bg-lightGreyBg-default rounded-[50%]">
+          <FaMinus size="18px" color="#f87171"/>
+        </div>
+
+        Remove
+      </button>
     </div>
   )
 }

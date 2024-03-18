@@ -39,7 +39,7 @@ export default function Sidebar() {
         </ul>
 
         <div className="flex flex-col w-full gap-2 items-start justify-start pl-[28px]">
-            <Link href="/" className="flex justify-start items-center gap-[10px] text-[13px]">
+            <Link href="/contact-us" className="flex justify-start items-center gap-[10px] text-[13px]">
             <IoHelpCircleOutline size="20px" />
             Help
             </Link>
