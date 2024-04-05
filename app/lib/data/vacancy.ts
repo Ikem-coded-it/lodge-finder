@@ -1,4 +1,3 @@
-import { Vacancy } from '../definitions';
 
 export async function fetchPaginatedVacancies() {
 

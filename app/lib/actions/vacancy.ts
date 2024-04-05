@@ -1,5 +1,4 @@
 // All create, update and delete functions for vacancies in here
-import { Vacancy } from '../definitions';
 
 export async function createVacancy(formData: FormData) {
 
