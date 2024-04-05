@@ -55,11 +55,11 @@ export default function ExtraInfo() {
       <div className="w-[144px] h-[fit-content] flex justify-between items-center"> 
         <div className="flex flex-col items-center justify-center font-[500] text-[9px] w-[70%] gap-[5px]">
           <CiTrash size="18px" color="#000000"/>
-          SANITATION FEE
+          SANITATION BILL
         </div>
 
         <div className="w-[84px] h-[21px] bg-[#F0F4F8] flex justify-center items-center rounded-[50px] font-[500] text-[9px]">
-          ---/per year
+          ---/per month
         </div>
       </div>
 

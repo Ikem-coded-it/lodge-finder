@@ -14,7 +14,8 @@ export default function Button({
   bg,
   className,
   onClick,
-  type
+  type,
+  disabled
 } : {
   children?: ReactNode,
   text: string,
@@ -22,7 +23,8 @@ export default function Button({
   bg?: boolean,
   className?: string,
   onClick?: MouseEventHandler<HTMLButtonElement>,
-  type?: "button" | "submit" | "reset" | undefined
+  type?: "button" | "submit" | "reset" | undefined,
+  disabled?: boolean
 }) {
 
   const classIn = cn(
@@ -34,6 +36,7 @@ export default function Button({
     <button
     type={type}
     onClick={onClick}
+    disabled={disabled}
     className={clsx(
       classIn,
       {

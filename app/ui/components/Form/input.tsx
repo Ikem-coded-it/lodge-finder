@@ -11,9 +11,10 @@ type InputProps = {
   type: "text" | "password" | "number" | "textarea" | "email",
   onChange: ChangeEvent<any> | any,
   onBlur: any,
-  label: string,
+  label?: string,
   name: string,
   className: string,
+  inputClassName?: string;
   error?: string,
   placeholder?: string,
   touched: boolean | undefined
@@ -27,6 +28,7 @@ export default function DynamicInputField({
   label,
   name,
   className,
+  inputClassName,
   error,
   placeholder,
   touched
@@ -52,11 +54,14 @@ export default function DynamicInputField({
 
   return(
     <div className={mergedClasses}>
+      {
+      label && 
       <label 
       htmlFor={name}
-      className="mb-[10px] font-[500] text-[11px] text-darkFont-default">
+      className="mb-[10px] font-[500] text-[13px] text-darkFont-default">
         {label}
       </label>
+      }
 
       <div className={clsx(
         {
@@ -73,10 +78,12 @@ export default function DynamicInputField({
             onChange={onChange}
             onBlur={onBlur}
             placeholder={placeholder}
-            className="min-w-[90%] max-w-[90%] min-h-full max-h-full border-none outline-none bg-transparent px-1 py-2 text-sm text-darkFont-default font-medium"
-            >
-              {value}
-            </textarea>
+            className={cn(
+              "min-w-[90%] max-w-[90%] min-h-full max-h-full border-none outline-none bg-transparent px-1 py-2 text-sm text-darkFont-default font-medium",
+              inputClassName
+            )}
+            value={value}
+            />
           ):(
             <input
             ref={inputRef}
@@ -87,7 +94,10 @@ export default function DynamicInputField({
             onBlur={onBlur}
             value={value}
             placeholder={placeholder}
-            className="w-[90%] h-full border-none outline-none active:bg-transparent px-1 py-2 text-sm text-darkFont-default font-medium"
+            className={cn(
+              "w-[90%] h-full border-none outline-none active:bg-transparent px-1 py-2 text-sm text-darkFont-default font-medium",
+              inputClassName
+            )}
             />
           )
         }

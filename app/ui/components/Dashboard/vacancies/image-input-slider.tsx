@@ -8,30 +8,38 @@ import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import clsx from "clsx";
 import cn from "@/app/lib/utils/cn";
 import { useState } from "react";
+import Button from "../../Button";
+import { SlPicture } from "react-icons/sl";
+import ChooseImageModal from "@/app/ui/components/Dashboard/vacancies/choose-image-modal";
 
-const lodgePics = [
-  image1, image2, image3
+
+const data = [
+  {url: null, type: "Room picture"},
+  {url:image1, type: "Bathroom picture" },
+  {url: image3, type: "Building picture"},
+  {url: null, type: "Balcony picture"}
 ]
 
-export default function LodgeImageSlider({
+export default function ImageInputSlider({
   className
 }:{
   className?: string
 }) {
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
+  const [isImageModalOpen, setIsImageModalOpen] = useState<boolean>(false);
 
   function increaseSlide() {
-    setActiveImageIndex(prev => (prev + 1) % lodgePics.length)
+    setActiveImageIndex(prev => (prev + 1) % data.length)
   }
 
   function decreaseSlide() {
     setActiveImageIndex(prev => {
-      return prev === 0 ? lodgePics.length - 1 : prev - 1
+      return prev === 0 ? data.length - 1 : prev - 1
     })
   }
 
   const mergedClasses = cn(
-    "min-w-full h-[350px] mb-[20px] flex flex-col items-center justify-start group",
+    "min-w-full h-[400px] mb-[20px] flex flex-col items-center justify-start gap-3",
     className
   )
 
@@ -39,12 +47,13 @@ export default function LodgeImageSlider({
     <div className={mergedClasses}>
       <div className="w-full h-[320px] relative">
         {
-          lodgePics.map((pic, index) => {
+          data.map(({ url, type }, index) => {
+            if (url)
             return (
               <Image
               key={index}
-              src={pic}
-              alt="a depiction of one of the hot lodges in ifite"
+              src={url}
+              alt={type}
               height={330}
               width={300}
               className={clsx(
@@ -56,12 +65,24 @@ export default function LodgeImageSlider({
               )}
               />
             )
+            else
+            return (
+              <DefaultImageDisplay className={clsx(
+                {
+                  "opacity-100": index === activeImageIndex,
+                  "opacity-0": index !== activeImageIndex,
+                }
+              )}
+              text={type + " here"}
+              />
+            )
           })
         }
       </div>
 
-      <div className="w-fit h-[30px] flex justify-center items-center lg:opacity-0 lg:pointer-events-none lg:group-hover:opacity-100 lg:group-hover:pointer-events-auto">
+      <div className="w-fit h-[30px] flex justify-center items-center">
         <button
+        type="button"
         onClick={decreaseSlide}
         className="h-full w-[29px] flex justify-center items-center"
         >
@@ -70,9 +91,10 @@ export default function LodgeImageSlider({
 
         <div className="flex justify-center items-center h-full gap-[10px] lg:gap-[5px]">
           {
-            lodgePics.map((pic, index) => {
+            data.map((_, index) => {
               return(
                 <button
+                type="button"
                 key={index}
                 onClick={() => setActiveImageIndex(index)}
                 className={clsx(
@@ -89,12 +111,45 @@ export default function LodgeImageSlider({
         </div>
 
         <button
+        type="button"
         onClick={increaseSlide}
         className="h-full w-[29px] flex justify-center items-center"
         >
           <RxCaretRight size="30px"/>
         </button>
       </div>
+
+      <Button
+      type="button"
+      border
+      text="choose image"
+      className="w-[100px] h-fit"
+      onClick={() => setIsImageModalOpen(true)}
+      />
+
+      <ChooseImageModal
+      isOpen={isImageModalOpen}
+      closeModal={() => setIsImageModalOpen(false)}
+      />
     </div>
   )
+}
+
+function DefaultImageDisplay({
+  text,
+  className
+}: {
+  text: string,
+  className: string,
+}) {
+    const mergedClasses = cn(
+      "flex flex-col gap-2 justify-center items-center min-w-full h-full rounded-[10px] absolute transition-opacity duration-[.2s] ease-out bg-lightGreyBg-default",
+      className
+    )
+    return (
+        <div className={mergedClasses}>
+            <SlPicture size="25px" color="#86198f"/>
+            <p>{text}</p>
+        </div>
+    )
 }

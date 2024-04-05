@@ -4,9 +4,18 @@ import VacancyDetails from "@/app/ui/components/LodgeCard/VacancyDetails";
 import Link from "next/link";
 import Button from "@/app/ui/components/Button";
 import SliderFrame from "@/app/ui/components/SliderFrame";
-import LodgeImageSlider from "@/app/ui/components/LodgeCard/LodgeImageSlider";
 import cn from "@/app/lib/utils/cn";
 import { FaMinus } from "react-icons/fa";
+import image1 from "@/public/lodges/lodge1.png";
+import image2 from "@/public/lodges/lodge2.png";
+import image3 from "@/public/lodges/lodge3.png";
+import DisplaySlider from "../Slider-display";
+
+const pics = [
+  {url: image1, type: "placeholder"},
+  {url: image2, type: "placeholder"},
+  {url: image3, type: "placeholder"},
+]
 
 // Used in the vacancies page
 export default function HorizontalLodgeCard({
@@ -39,7 +48,11 @@ export default function HorizontalLodgeCard({
 
       <div className="flex flex-col lg:flex-row justify-start lg:justify-between items-start gap-[15px] mb-[20px]">
         {/* Lodge Picture slider */}
-        <LodgeImageSlider className="min-w-full md:min-w-[500px] lg:min-w-[400px] lg:max-w-[400px] h-[340px] lg:h-[380px]"/>
+        <DisplaySlider
+        type="display"
+        data={pics}
+        className="min-w-full md:min-w-[500px] lg:min-w-[400px] lg:max-w-[400px] h-[340px] lg:h-[380px]"
+        />
 
         <div className="flex flex-col justify-start items-start flex-1 h-[288px]">
           <VacancyDetails/>

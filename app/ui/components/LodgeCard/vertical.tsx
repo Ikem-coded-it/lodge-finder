@@ -1,10 +1,19 @@
 import { CiLocationOn } from "react-icons/ci";
 import ExtraInfo from "@/app/ui/components/LodgeCard/ExtraInfo";
-import LodgeImageSlider from "@/app/ui/components/LodgeCard/LodgeImageSlider";
 import VacancyDetails from "@/app/ui/components/LodgeCard/VacancyDetails";
 import Link from "next/link";
 import Button from "@/app/ui/components/Button";
 import SliderFrame from "@/app/ui/components/SliderFrame"
+import image1 from "@/public/lodges/lodge1.png";
+import image2 from "@/public/lodges/lodge2.png";
+import image3 from "@/public/lodges/lodge3.png";
+import DisplaySlider from "../Slider-display";
+
+const pics = [
+  {url: image1, type: "placeholder"},
+  {url: image2, type: "placeholder"},
+  {url: image3, type: "placeholder"},
+]
 
 // Used in the home page "Hot" section
 export default function VerticalLodgeCard() {
@@ -25,7 +34,10 @@ export default function VerticalLodgeCard() {
       </SliderFrame>
 
       {/* Lodge Building Picture */}
-      <LodgeImageSlider/>
+      <DisplaySlider
+      type="display"
+      data={pics}
+      />
 
       <VacancyDetails/>
 

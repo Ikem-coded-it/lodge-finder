@@ -10,8 +10,9 @@ export default function LodgeFinderLogo() {
           src="/logo.png"
           width={100}
           height={60}
-          className="h-[70px] w-[100px]"
+          className="h-[70px] w-auto"
           alt="Lodge finder's logo that's also a link to the homepage"
+          priority
         />
       </Link>
     </Container>
