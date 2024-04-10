@@ -43,7 +43,7 @@ export default function Button({
         // if border then show border, if background color then show background color
         'border-[1px] border-darkBlue-default': border,
         'border-none ': !border,
-        'bg-lightBlue-default': bg,
+        'bg-lightBlue-default drop-shadow-md': bg,
         'bg-transparent': !bg,
       }
     )}>

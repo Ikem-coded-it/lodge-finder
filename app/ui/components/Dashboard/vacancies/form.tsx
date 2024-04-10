@@ -21,7 +21,7 @@ export default function VacancyForm({
     className?: string
 }) {
 
-    const formVacancyContainer = "flex flex-col items-center justify-start min-w-[320px] max-w-[320px]  md:min-w-[405px] md:max-w-[600px] lg:min-w-[990px] lg:max-w-[990px] rounded-[8px] p-[20px] gap-[20px] bg-whiteBg-default relative"
+    const formVacancyContainer = "flex flex-col items-center justify-start min-w-[320px] max-w-[320px]  md:min-w-[405px] md:max-w-[600px] lg:min-w-[990px] lg:max-w-[990px] rounded-[8px] p-[20px] gap-[20px] bg-whiteBg-default relative drop-shadow-md"
 
     const inputLabelContainerClasses = "flex flex-col items-start gap-[10px] h-fit w-full"
     const labelClasses = "font-[500] text-[#000000] text-[13px]"
