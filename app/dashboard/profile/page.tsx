@@ -39,10 +39,6 @@ export default withPageAuthRequired (async function Page() {
                         <Display label="Call number" value="+234 813 851 8766"/>
                         <Display label="Whatsapp number" value="+234 811 834 2406"/>
                     </DataColumn>
-
-                    <DataColumn>
-                        <Display label="Password" value="*************"/>
-                    </DataColumn>
                 </div>
             </section>
         </Main>

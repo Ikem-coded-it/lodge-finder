@@ -18,7 +18,7 @@ export default function Button({
   disabled
 } : {
   children?: ReactNode,
-  text: string,
+  text?: string,
   border?: boolean | BorderType,
   bg?: boolean,
   className?: string,
@@ -28,13 +28,13 @@ export default function Button({
 }) {
 
   const classIn = cn(
-    "p-0 flex justify-center items-center text-darkFontBlue-default rounded-[50px] text-[14px] hover:bg-blue-600 hover:text-slate-50 transition-all ease-out duration-[.2s]",
+    "p-0 flex justify-center items-center text-darkFontBlue-default rounded-[50px] text-[14px] hover:bg-blue-600 hover:text-slate-50 transition-all ease-out duration-[.2s] disabled:cursor-not-allowed disabled:opacity-70",
     className
   )
 
   return (
     <button
-    type={type}
+    type={type || "button"}
     onClick={onClick}
     disabled={disabled}
     className={clsx(
@@ -43,8 +43,8 @@ export default function Button({
         // if border then show border, if background color then show background color
         'border-[1px] border-darkBlue-default': border,
         'border-none ': !border,
-        'bg-lightBlue-default drop-shadow-md': bg,
-        'bg-transparent': !bg,
+        'bg-lightBlue-default drop-shadow-md disabled:hover:bg-lightBlue-default': bg,
+        'bg-transparent disabled:hover:bg-transparent': !bg,
       }
     )}>
       {children}

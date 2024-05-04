@@ -4,6 +4,7 @@ import cn from "@/app/lib/utils/cn";
 import { SlPicture } from "react-icons/sl";
 import React, { useState } from 'react';
 import { useFormikContext } from "formik";
+import ChooseImageBtn from "@/app/ui/components/Dashboard/choose-image-btn";
 
 export default function FileUploadDisplay({
     info,
@@ -38,7 +39,7 @@ export default function FileUploadDisplay({
               <div className="relative w-full h-full flex flex-col justify-center items-center bg-lightGreyBg-default">
                   <img
                   className={clsx(
-                      "absolute top-0 w-full h-full z-10",
+                      "absolute top-0 w-full h-full z-10 object-center object-cover",
                       {
                           "opacity-100": file,
                           "opacity-0": !file
@@ -56,26 +57,12 @@ export default function FileUploadDisplay({
                     </p>
                   }
               </div>
-  
-              <div className="relative">
-                <label
-                htmlFor={`images.${info.key}`}
-                className="p-0 flex justify-center items-center text-darkFontBlue-default rounded-[50px] text-[14px] hover:bg-blue-600 hover:text-slate-50 transition-all ease-out duration-[.2s] border-[1px] border-darkBlue-default w-[100px]"
-                >
-                  choose image
-                </label>
-  
-                <input
-                type="file"
-                id={`images.${info.key}`}
-                name={`images.${info.key}`}
-                accept="image/*"
-                onChange={(e) => displayImage(e)}
-                onBlur={handleBlur}
-                className="hidden"
-                />
-              </div>
-  
+
+              <ChooseImageBtn
+              name={`images.${info.key}`}
+              onChange={(e: any) => displayImage(e)}
+              onBlur={handleBlur}
+              />
           </div>
       )
   }

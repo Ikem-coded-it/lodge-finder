@@ -159,7 +159,8 @@ export default function VacancyForm({
                         <Button
                         text="Upload vacancy"
                         type="submit"
-                        className='w-[250px] h-[50px] mt-2 bg-yellow-600 text-white'
+                        bg
+                        className='w-[250px] h-[50px] mt-2'
                         />
                      </form>
                 )}

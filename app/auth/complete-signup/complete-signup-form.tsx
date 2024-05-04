@@ -1,34 +1,56 @@
 'use client'
 // Render Prop
-
 import React from 'react';
 import { useFormik } from 'formik';
 import { CaretakerSignup } from "@/app/lib/definitions/caretaker";
-import { validateCaretakerSignup } from "./validator";
 import DynamicInputField from "@/app/ui/components/Form/input";
 import InputContainer from "@/app/ui/components/Form/input-container";
 import Button from "@/app/ui/components/Button";
+import $http from "@/app/lib/services/$http";
+import { AxiosError } from 'axios';
+import { goToTop } from "@/app/lib/utils/window"
+import { useEffect, useState } from "react";
+import { v4 as uuid } from "uuid";
+import { toast } from 'react-toastify';
+import ColorRingSpinner from "@/app/ui/components/spinner";
+import { useRouter } from "next/navigation";
+import ApplicationRoutes from "@/app/config/routes";
+import completeSignupSchema from "@/app/lib/schemas/complete-signup";
 
-const CompleteSignupForm = () => {
+const CompleteSignupForm = ({...user}: any) => {
+  const [submitting, setSubmitting] = useState<boolean>(false);
+  const router = useRouter();
+  useEffect(() => {
+    goToTop()
+  }, [])
 
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
-      // email: '',
-      // password: '',
-      // confirmPassword: '',
+      reference: user?.sub ?? uuid(),
+      username: user?.nickname ?? "",
+      firstName: user?.given_name ?? '',
+      lastName: user?.family_name ?? '',
+      email: user?.email ?? '',
       callNumber: '',
       whatsappNumber: '',
     } as CaretakerSignup,
 
-    validate: validateCaretakerSignup as any,
+    validationSchema: completeSignupSchema,
 
-    onSubmit: (values: any, { setSubmitting }: { setSubmitting: any } ) => {
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
-        setSubmitting(false);
-      }, 400);
+    onSubmit: async (values: any) => {
+      setSubmitting(true)
+      try {
+        const res = await $http.post("/api/caretaker", values)
+        console.log(res)
+        if(res.status == 201) {
+          toast.success("Profile created successfully")
+          setSubmitting(false);
+          router.push(ApplicationRoutes.DASHBOARD.VACANCIES.VIEW)
+        }
+      } catch (error: AxiosError | any) {
+        toast.error("Something went wrong")
+        console.log(error.message)
+      }
     },
   });
 
@@ -45,8 +67,8 @@ const CompleteSignupForm = () => {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.firstName}
-        error={formik.errors.firstName}
-        touched={formik.touched.firstName}
+        error={formik.errors.firstName as string}
+        touched={formik.touched.firstName as boolean}
         className="w-full md:w-2/4"
         />
 
@@ -58,75 +80,36 @@ const CompleteSignupForm = () => {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.lastName}
-        error={formik.errors.lastName}
-        touched={formik.touched.lastName}
+        error={formik.errors.lastName as string}
+        touched={formik.touched.lastName as boolean}
         className="w-full md:w-2/4"
         />
       </InputContainer>
-      
-      {/* <DynamicInputField
-      type="email"
-      name="email"
-      label="Email"
-      placeholder="emeka@gmail.com"
-      onChange={formik.handleChange}
-      onBlur={formik.handleBlur}
-      value={formik.values.email}
-      error={formik.errors.email}
-      touched={formik.touched.email}
-      className="w-full"
-      /> */}
-
-      {/* <InputContainer>
-        <DynamicInputField
-        type="password"
-        name="password"
-        label="Password"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.password}
-        error={formik.errors.password}
-        touched={formik.touched.password}
-        className="w-full md:w-1/2"
-        />
-
-        <DynamicInputField
-        type="password"
-        name="confirmPassword"
-        label="Confirm password"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.confirmPassword}
-        error={formik.errors.confirmPassword}
-        touched={formik.touched.confirmPassword}
-        className="w-full md:w-1/2"
-        />
-      </InputContainer> */}
 
       <InputContainer>
         <DynamicInputField
-        type="number"
+        type="text"
         name="callNumber"
         label="Call number"
         placeholder="+234..."
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.callNumber}
-        error={formik.errors.callNumber}
-        touched={formik.touched.callNumber}
+        error={formik.errors.callNumber as string}
+        touched={formik.touched.callNumber as boolean}
         className="w-full md:w-1/2"
         />
 
         <DynamicInputField
-        type="number"
+        type="text"
         name="whatsappNumber"
         label="Whatsapp number"
         placeholder="+234..."
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.whatsappNumber}
-        error={formik.errors.whatsappNumber}
-        touched={formik.touched.whatsappNumber}
+        error={formik.errors.whatsappNumber as string}
+        touched={formik.touched.whatsappNumber as boolean}
         className="w-full md:w-1/2"
         />
       </InputContainer>
@@ -134,9 +117,13 @@ const CompleteSignupForm = () => {
       <Button
       bg
       type="submit"
-      text="Create account"
       className="w-[150px] h-[35px] mt-[20px]"
-      />
+      disabled={submitting}
+      >
+        {
+          submitting == true ? <ColorRingSpinner/> : "Finish"
+        }
+      </Button>
     </form>
   )
 }

@@ -3,7 +3,6 @@ import {  withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Button from "@/app/ui/components/Button";
 import { GoPlus } from "react-icons/go";
 import Link from "next/link";
-import HorizontalLodgeCard from "@/app/ui/components/LodgeCard/horizontal";
 import DashboardLodgeCard from "@/app/ui/components/Dashboard/vacancies/lodge-card";
 import DashboardHeader from "@/app/ui/components/Dashboard/header";
 
