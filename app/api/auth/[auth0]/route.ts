@@ -12,7 +12,7 @@ import {
 
 export const GET = handleAuth({
     login: handleLogin({
-      returnTo: "/dashboard/vacancies",
+      returnTo: "/authorize/redirect",
       authorizationParams: {
         prompt: "login",
       },
@@ -20,7 +20,7 @@ export const GET = handleAuth({
 
     signup: handleLogin({
       authorizationParams: {
-        user: "singup",
+        user: "signup",
         screen_hint: "signup",
         prompt: "login",
       },

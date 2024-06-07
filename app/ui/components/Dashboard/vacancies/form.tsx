@@ -1,5 +1,5 @@
 "use client"
-import { Formik } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import { CiLocationOn } from "react-icons/ci";
 import SliderFrame from "@/app/ui/components/SliderFrame";
 import OptionsSlider from "@/app/ui/components/Dashboard/vacancies/options-slider";
@@ -10,6 +10,13 @@ import Button from '../../Button';
 import DisplaySlider from '../../Slider-display';
 import { vacancyImagesUpload } from "@/app/lib/store/vacancy-form";
 import VacancySchema from '@/app/lib/schemas/vacancy';
+import { toast } from "react-toastify";
+import ApplicationRoutes from '@/app/config/routes';
+import ColorRingSpinner from "@/app/ui/components/spinner";
+import { AxiosError } from 'axios';
+import { useRouter } from "next/navigation";
+import $http from '@/app/lib/services/$http';
+import { IVacancy } from '@/app/lib/models/vacancy';
 
 export default function VacancyForm({
     initialValues,
@@ -20,20 +27,42 @@ export default function VacancyForm({
     validation: any,
     className?: string
 }) {
-
+    const router = useRouter();
     const formVacancyContainer = "flex flex-col items-center justify-start min-w-[320px] max-w-[320px]  md:min-w-[405px] md:max-w-[600px] lg:min-w-[990px] lg:max-w-[990px] rounded-[8px] p-[20px] gap-[20px] bg-whiteBg-default relative drop-shadow-md"
 
     const inputLabelContainerClasses = "flex flex-col items-start gap-[10px] h-fit w-full"
     const labelClasses = "font-[500] text-[#000000] text-[13px]"
 
-    const uploadVacancy = (values: Vacancy) => {
+    const uploadVacancy = async(values: Vacancy, { setSubmitting }: { setSubmitting: any }) => {
         console.log(values)
+        setSubmitting(true);
+        try {
+            const res = await $http.post("/api/vacancy", values)
+            console.log(res)
+            if(res.status == 201) {
+              toast.success("Vacancy created successfully")
+              setSubmitting(false);
+              router.push(ApplicationRoutes.DASHBOARD.VACANCIES.VIEW)
+            }
+          } catch (error: AxiosError | any) {
+            toast.error("Something went wrong")
+            console.log(error.message)
+          }
     }
 
     return (
         <div className={'h-fit w-fit'}>
             <Formik initialValues={initialValues} onSubmit={uploadVacancy} validationSchema={VacancySchema}>
-                {({ handleSubmit, handleChange, handleBlur, values, touched, errors }) => (
+                {({
+                    handleSubmit,
+                    handleChange,
+                    handleBlur,
+                    values,
+                    touched,
+                    errors,
+                    isValid,
+                    isSubmitting
+                }) => (
                      <form
                      onSubmit={handleSubmit}
                      className={formVacancyContainer}>
@@ -159,9 +188,12 @@ export default function VacancyForm({
                         <Button
                         text="Upload vacancy"
                         type="submit"
+                        disabled={!isValid || isSubmitting}
                         bg
                         className='w-[250px] h-[50px] mt-2'
-                        />
+                        >
+                            {isSubmitting ? <ColorRingSpinner size={50}/> : null}
+                        </Button>
                      </form>
                 )}
             </Formik>

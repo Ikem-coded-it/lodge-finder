@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Caretaker from "@/app/lib/models/caretaker";
 import connectToDB from "@/app/lib/db";
+import { getSession } from "@auth0/nextjs-auth0";
 
 export async function GET(request: NextRequest, response: NextResponse) {
     try{
@@ -16,14 +17,15 @@ export async function GET(request: NextRequest, response: NextResponse) {
 }
 
 export async function POST(request: NextRequest, response: NextResponse) {
+    const session = await getSession();
+    if (!session) {
+        return NextResponse.json({message: "Unauthorized"},{ status: 401 });
+    }
     try{
         connectToDB()
         const requestBody = await request.json()
-        console.log(requestBody)
         const newCaretaker = new Caretaker(requestBody)
-        console.log("here")
         await newCaretaker.save();
-        console.log(newCaretaker)
         if(!newCaretaker) return response.status
         return NextResponse.json({caretaker: newCaretaker}, {status: 201})
     } catch(e: any) {
