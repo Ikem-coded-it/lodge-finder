@@ -1,4 +1,10 @@
 const ApplicationRoutes = {
+    LANDING: "/",
+    AUTH: {
+        LOGIN: "/auth/login",
+        SIGNUP: "/auth/proceed",
+        REDIRECT: "/authorize/redirect",
+    },
     DASHBOARD: {
         VACANCIES: {
             VIEW: "/dashboard/vacancies",

@@ -1,14 +1,13 @@
-import { persistentMap } from "@nanostores/persistent";
-import { Token, User } from "@/app/lib/definitions/user";
-import { atom } from "nanostores";
+import { atom } from 'nanostores';
+import { User } from "@/app/lib/definitions/user"
 
-// @ts-ignore
-export const authToken = persistentMap<Token | null>("@", null);
+export const $user = atom<User | null>(null)
+export const $authToken = atom<string | null>(null)
 
-// @ts-ignore
-export const userAtomMap = persistentMap<User | null>("@chreestis", null);
-export const saveUser = (user: User | null) => {
-  if (!user) return userAtomMap.set(null);
-  userAtomMap.set(JSON.stringify(user) as unknown as User);
-};
-export const logoutModal = atom(false);
+export function saveUser(userData: User) {
+  $user.set(userData as User);
+}
+
+export function saveToken(token: string) {
+  $authToken.set(token);
+}
