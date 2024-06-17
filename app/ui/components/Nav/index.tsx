@@ -5,6 +5,6 @@ import { getSession } from "@auth0/nextjs-auth0";
 export default async function Nav() {
   const session = await getSession();
 
-  if (session) return <CaretakerNav/>
-  return <MainNav/>
+  if (session) return <CaretakerNav />;
+  return <MainNav />;
 }
