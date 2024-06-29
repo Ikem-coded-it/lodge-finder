@@ -7,6 +7,10 @@ const nextConfig = {
       {
         hostname: "s.gravatar.com",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
     ],
   },
 };
