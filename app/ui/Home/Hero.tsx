@@ -33,7 +33,6 @@ export default function Hero() {
           <Button
           text="View vacancies"
           border
-          bg
           className="gap-[10px] w-[189px] h-[48px]"/>
         </Link>
 

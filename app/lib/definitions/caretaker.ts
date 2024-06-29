@@ -1,4 +1,6 @@
 export interface CaretakerSignup {
+  reference: string;
+  username: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -10,13 +12,15 @@ export interface CaretakerSignup {
 }
 
 export interface Caretaker  {
-  id: string;
+  id?: string;
+  reference: string;
+  username: string;
   firstName: string;
   lastName: string;
   email: string;
-  callNumber: number;
+  callNumber: String;
   imageURL?: string;
-  whatsappNumber: number;
+  whatsappNumber: string;
 }
 
 export interface CaretakerLogin {
