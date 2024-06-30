@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "student",
   ],
   metadataBase: new URL("https://lodgefinder.com.ng"),
-  authors: [{ name: "Onubogu Ikemefuna", url: "ikemsportfolio.netlify.app" }],
+  authors: [{ name: "Onubogu Ikemefuna", url: "ikemcodes.netlify.app" }],
   creator: "Onubogu Ikemefuna",
   publisher: "Onubogu Ikemefuna",
 };

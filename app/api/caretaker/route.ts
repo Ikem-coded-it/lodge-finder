@@ -27,7 +27,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
         const requestBody = await request.json()
         const newCaretaker = new Caretaker(requestBody)
         await newCaretaker.save();
-        if(!newCaretaker) return response.status
+        // if(!newCaretaker) return response.status
         return NextResponse.json({caretaker: newCaretaker}, {status: 201})
     } catch(e: any) {
         return NextResponse.json({message: e.message},{ status: 400 });

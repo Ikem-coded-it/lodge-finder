@@ -5,14 +5,11 @@ import { GoPlus } from "react-icons/go";
 import Link from "next/link";
 import DashboardLodgeCard from "@/app/ui/components/Dashboard/vacancies/lodge-card";
 import DashboardHeader from "@/app/ui/components/Dashboard/header";
-import { $user, $authToken } from "@/app/lib/store/user.atom";
 import DashboardVaccancies from "@/app/ui/components/Dashboard/vacancies/dashboard-vaccancies";
 
 // protected page route
 export default withPageAuthRequired(
   async function Page() {
-    console.log("token: ", $authToken.get());
-    console.log("user: ", $user.get());
     return (
       <Main>
         <DashboardHeader text="UPLOADED VACANCIES (4)">
