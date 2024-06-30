@@ -50,7 +50,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     console.log("here");
     await newVacancy.save();
     console.log(newVacancy);
-    if (!newVacancy) return response.status;
+    if (!newVacancy) return NextResponse.json({ message: "Could not create vacancy" }, { status: 400 });
     return NextResponse.json({ vacancy: newVacancy }, { status: 201 });
   } catch (e: any) {
     return NextResponse.json({ message: e.message }, { status: 400 });
