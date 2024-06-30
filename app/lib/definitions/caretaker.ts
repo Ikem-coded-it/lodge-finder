@@ -1,6 +1,6 @@
 export interface CaretakerSignup {
-  reference: string;
-  username: string;
+  reference?: string;
+  username?: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -13,8 +13,8 @@ export interface CaretakerSignup {
 
 export interface Caretaker  {
   id?: string;
-  reference: string;
-  username: string;
+  reference?: string;
+  username?: string;
   firstName: string;
   lastName: string;
   email: string;
