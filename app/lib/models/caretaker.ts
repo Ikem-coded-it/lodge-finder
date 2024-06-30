@@ -62,6 +62,7 @@ const caretakerSchema = new mongoose.Schema<ICaretaker>({
     },
     credits: {
         type: Number,
+        required: true,
         default: 0
     }
 }, {timestamps: true})

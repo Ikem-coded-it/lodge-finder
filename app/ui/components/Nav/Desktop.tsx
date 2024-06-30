@@ -8,6 +8,8 @@ import { MainMenu, CaretakerMenu } from "@/app/ui/components/Nav/Mobile";
 import { useState } from "react";
 import { usePathname } from 'next/navigation';
 import clsx from "clsx";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { ImCoinDollar } from "react-icons/im";
 
 const links = [
   {href: "/", text: "Home"},
@@ -15,7 +17,7 @@ const links = [
   {href: "/contact-us", text: "Contact us"},
 ]
 
-const navClasses = "bg-whiteBg-default fixed top-[0] left-[0] z-50 h-[80px] w-full px-[15px] md:px-[30px] pt-[10px] flex justify-between items-end"
+const navClasses = "bg-whiteBg-default fixed top-[0] left-[0] z-50 h-[60px] lg:h-[80px] w-full px-[15px] md:px-[30px] pt-[10px] flex justify-between items-center md:items-end"
 
 export function MainNav() {
   const pathname = usePathname()
@@ -80,10 +82,16 @@ export function MainNav() {
 export function CaretakerNav() {
   const pathname = usePathname()
   const [openMenu, setOpenMenu] = useState(false);
+  const { user } = useUser()
 
   return (
     <nav className={`${navClasses}`}>
       <LodgeFinderLogo/>
+
+      <div className="flex md:hidden gap-[2px] items-center justify-center">
+          <ImCoinDollar size="30px"/>
+          <p>{user?.credits ?? 0}</p>
+      </div>
 
       <ul className="hidden lg:flex h-full w-[287px] justify-evenly items-center">
         {

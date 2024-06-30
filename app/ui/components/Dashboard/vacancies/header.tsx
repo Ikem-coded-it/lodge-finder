@@ -1,23 +1,29 @@
 "use client"
 
 import SearchBar from "@/app/ui/vacancies/SearchBar";
-import { GoBell } from "react-icons/go";
+// import { GoBell } from "react-icons/go";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { ImCoinDollar } from "react-icons/im";
 
 export default function DashboardVacanciesHeader() {
     const { user } = useUser();
 
     const pathname = usePathname();
     return(
-        <div className="h-[50px] lg:h-[81px] w-full bg-whiteBg-default flex justify-end items-center gap-4 md:gap-24 lg:gap-44 pr-6 absolute top-[80px] lg:top-0 right-0 z-[40]">
+        <div className="h-[50px] lg:h-[81px] w-full bg-whiteBg-default flex justify-end items-center gap-4 md:gap-24 lg:gap-44 pr-6 absolute top-[60px] lg:top-0 right-0 z-[40]">
             <SearchBar/>
 
-            <div className="h-fit flex gap-2">
-                <div className="relative h-fit w-fit">
+            <div className="h-fit flex gap-6">
+                {/* <div className="relative h-fit w-fit">
                     <GoBell size="20px"/>
                     <div className="h-[10px] w-[10px] rounded-[50%] bg-red-500 absolute top-0 right-0"/>
+                </div> */}
+
+                <div className="hidden md:flex gap-[2px] items-center justify-center">
+                    <ImCoinDollar size="30px"/>
+                    <span>{user?.credits ?? 0 as number}</span>
                 </div>
 
                 {
