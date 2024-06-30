@@ -5,18 +5,18 @@ import { cloudinaryService } from "@/app/lib/services/cloudinary.service";
 export async function GET(request: NextRequest, response: NextResponse) {
   try {
     return NextResponse.json({
-      data: "it worked",
+      message: "it worked",
     });
   } catch (e: any) {
     console.log(e);
-    return new Error(e?.message);
+    return NextResponse.json({error: e.message},{ status: 400 });
   }
 }
 
 export async function POST(request: NextRequest, response: NextResponse) {
   try {
     return NextResponse.json({
-      data: "here",
+      message: "here",
     });
     const body = await request.json();
 
@@ -32,6 +32,6 @@ export async function POST(request: NextRequest, response: NextResponse) {
     // });
   } catch (e: any) {
     console.log(e);
-    return new Error(e?.message);
+    return NextResponse.json({error: e.message},{ status: 400 });
   }
 }
