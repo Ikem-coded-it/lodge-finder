@@ -9,6 +9,7 @@ interface ICaretaker {
     callNumber: string
     whatsappNumber: string
     imageURL: string
+    credits: number
 }
 
 const caretakerSchema = new mongoose.Schema<ICaretaker>({
@@ -58,6 +59,10 @@ const caretakerSchema = new mongoose.Schema<ICaretaker>({
     imageURL: {
         type: String,
         trim: true
+    },
+    credits: {
+        type: Number,
+        default: 0
     }
 }, {timestamps: true})
 
