@@ -6,10 +6,12 @@ import CreditPackageCard from "@/app/ui/components/Dashboard/packages/credit-pac
 
 const plans = [
     {
+        packageId: 1,
         credits: 10,
         price: 1000
     },
     {
+        packageId: 2,
         credits: 1,
         price: 150
     }
@@ -26,6 +28,7 @@ export default function Page() {
                     plans && plans.length > 0 && plans?.map(plan => (
                         <CreditPackageCard
                         key={plan?.price}
+                        packageId={plan?.packageId}
                         credits={plan?.credits}
                         price={plan?.price}
                         />

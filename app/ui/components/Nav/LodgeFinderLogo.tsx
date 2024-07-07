@@ -1,10 +1,11 @@
 import Container from "@/app/ui/components/Container";
 import Image from "next/image";
 import Link from "next/link";
+import cn from "@/app/lib/utils/cn";
 
-export default function LodgeFinderLogo() {
+export default function LodgeFinderLogo({ className }: {className?: string}) {
   return (
-    <Container fluid className="h-[100%] w-[fit-content]">
+    <Container fluid className={cn("h-[100%] w-[fit-content]", className)}>
       <Link href="/">
         <Image
           src="/logo.png"

@@ -2,12 +2,19 @@
 import { ImCoinDollar } from "react-icons/im";
 import Button from "@/app/ui/components/Button";
 import Image from "next/image"
+import paymentService from "@/app/lib/services/payment.service";
 
-export default function CreditPackageCard({ credits, price }: {credits: number, price: number}) {
+export default function CreditPackageCard({ packageId, credits, price }: {
+    packageId: number
+    credits: number,
+    price: number
+}) {
 
-    function triggerCheckout() {
-
+    async function triggerCheckout() {
+        const {authorizationUrl} = await paymentService.triggerCheckout(packageId)
+        window.location.href = authorizationUrl
     }
+
     return (
         <div className="flex flex-col items-center h-[300px] w-[300px] justify-center gap-6 p-6 border-[2px] border-lightBlue-default rounded-[20px] hover:border-darkBlue-default transition-all duration-[.2s]">
             <h1 className="text-3xl">
