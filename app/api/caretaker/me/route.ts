@@ -13,7 +13,7 @@ export async function GET(request: NextRequest, response: NextResponse) {
         caretaker,
     });
   } catch (e: any) {
-    console.log(error)
+    console.log(e)
     throw new Error(e);
   }
 }
