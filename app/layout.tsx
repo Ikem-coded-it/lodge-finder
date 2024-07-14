@@ -3,7 +3,8 @@ import { inter } from "@/app/ui/font";
 import "./globals.css";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import "@radix-ui/themes/styles.css";
-import Toast from "@/app/ui/components/Toast";
+import Toast from "./ui/components/Toast";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata: Metadata = {
   title: {
@@ -38,6 +39,7 @@ export default function RootLayout({
     <html lang="en">
       <UserProvider>
         <body className={inter.className}>{children}</body>
+        <Toast/>
       </UserProvider>
     </html>
   );

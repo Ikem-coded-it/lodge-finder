@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Sidebar from "../ui/components/Dashboard/sidebar";
 import HideNavInDesktop from "../ui/components/Dashboard/hide-menu";
-import { getSession } from "@auth0/nextjs-auth0";
 import DashboardVacanciesHeader from "../ui/components/Dashboard/vacancies/header";
-import { fetchAllCaretakers } from "../lib/data/caretaker";
 
 export const metadata: Metadata = {
   title: "Your dashboard",
@@ -14,12 +12,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  try {
-    const session = await getSession();
-    console.log(session);
-  } catch (error: any) {
-    console.log(error);
-  }
 
   return (
     <>

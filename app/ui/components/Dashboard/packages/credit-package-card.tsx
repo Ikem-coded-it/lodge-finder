@@ -21,8 +21,8 @@ export default function CreditPackageCard({ packageId, credits, price }: {
                 NGN {price}
             </h1>
             <div className="flex gap-2">
-                <h2 className="text-2xl">{credits}</h2>
                 <ImCoinDollar size="30px"/>
+                <h2 className="text-2xl">{credits} credit</h2>
             </div>
 
             <Button

@@ -4,11 +4,22 @@ import SearchBar from "@/app/ui/vacancies/SearchBar";
 // import { GoBell } from "react-icons/go";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser, UserProfile } from '@auth0/nextjs-auth0/client';
 import { ImCoinDollar } from "react-icons/im";
+import { useEffect, useState } from "react";
+import caretakerService from "@/app/lib/services/caretaker.service";
+import { Caretaker } from "@/app/lib/definitions/caretaker";
 
 export default function DashboardVacanciesHeader() {
-    const { user } = useUser();
+    const { user }: {user?: UserProfile} = useUser();
+    const [caretaker, setCaretaker] = useState(null)
+
+    useEffect(() => {
+        (async() => {
+            const { caretaker } = await caretakerService.me()
+            if(caretaker) setCaretaker(caretaker)
+        })()
+    }, [])
 
     const pathname = usePathname();
     return(
@@ -21,10 +32,10 @@ export default function DashboardVacanciesHeader() {
                     <div className="h-[10px] w-[10px] rounded-[50%] bg-red-500 absolute top-0 right-0"/>
                 </div> */}
 
-                <div className="hidden md:flex gap-[2px] items-center justify-center">
+                {caretaker && <div className="hidden md:flex gap-[2px] items-center justify-center">
                     <ImCoinDollar size="30px"/>
-                    <span>{user?.credits ?? 0 as number}</span>
-                </div>
+                    <span>{(caretaker as Caretaker)?.credits ?? 0}</span>
+                </div>}
 
                 {
                     pathname !== "/dashboard/profile" && user && (
