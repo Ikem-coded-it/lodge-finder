@@ -12,7 +12,7 @@ import { Caretaker } from "@/app/lib/definitions/caretaker";
 
 export default function DashboardVacanciesHeader() {
     const { user }: {user?: UserProfile} = useUser();
-    const [caretaker, setCaretaker] = useState(null)
+    const [caretaker, setCaretaker] = useState<Caretaker | null>(null)
 
     useEffect(() => {
         (async() => {

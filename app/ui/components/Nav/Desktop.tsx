@@ -5,11 +5,12 @@ import Link from 'next/link';
 import Button from "@/app/ui/components/Button";
 import LodgeFinderLogo from "@/app/ui/components/Nav/LodgeFinderLogo";
 import { MainMenu, CaretakerMenu } from "@/app/ui/components/Nav/Mobile";
-import { useState } from "react";
 import { usePathname } from 'next/navigation';
 import clsx from "clsx";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import { ImCoinDollar } from "react-icons/im";
+import { useEffect, useState } from "react";
+import caretakerService from "@/app/lib/services/caretaker.service";
+import { Caretaker } from "@/app/lib/definitions/caretaker";
 
 const links = [
   {href: "/", text: "Home"},
@@ -82,7 +83,14 @@ export function MainNav() {
 export function CaretakerNav() {
   const pathname = usePathname()
   const [openMenu, setOpenMenu] = useState(false);
-  const { user } = useUser()
+  const [caretaker, setCaretaker] = useState<Caretaker | null>(null)
+
+    useEffect(() => {
+        (async() => {
+            const { caretaker } = await caretakerService.me()
+            if(caretaker) setCaretaker(caretaker)
+        })()
+    }, [])
 
   return (
     <nav className={`${navClasses}`}>
@@ -90,7 +98,7 @@ export function CaretakerNav() {
 
       <div className="flex md:hidden gap-[2px] items-center justify-center">
           <ImCoinDollar size="30px"/>
-          <p>{user?.credits ?? 0}</p>
+          <span>{(caretaker as Caretaker)?.credits ?? 0}</span>
       </div>
 
       <ul className="hidden lg:flex h-full w-[287px] justify-evenly items-center">
