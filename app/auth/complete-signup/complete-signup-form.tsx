@@ -41,7 +41,6 @@ const CompleteSignupForm = ({...user}: any) => {
       setSubmitting(true)
       try {
         const res = await $http.post("/api/caretaker", values)
-        console.log(res)
         if(res.status == 201) {
           toast.success("Profile created successfully")
           setSubmitting(false);

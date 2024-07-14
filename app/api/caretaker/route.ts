@@ -5,12 +5,26 @@ import { getSession } from "@auth0/nextjs-auth0";
 
 export async function GET(request: NextRequest, response: NextResponse) {
   try {
-    await connectToDB();
-    const caretakers = await Caretaker.find();
-    console.log(caretakers);
-    return NextResponse.json({
-      caretakers,
-    });
+    const searchParams = request.nextUrl.searchParams
+    const query = searchParams.get('query')
+
+    if (query == "all") {
+      await connectToDB();
+      const caretakers = await Caretaker.find();
+      return NextResponse.json({
+        caretakers,
+      });
+    }
+
+    if (query == "me") {
+      const session = await getSession()
+      await connectToDB();
+      const caretaker = await Caretaker.findOne({reference: session?.user?.sub})
+      if(!caretaker) return NextResponse.json({message: "Caretaker not found"},{ status: 404 });
+      return NextResponse.json({
+          caretaker,
+      });
+    }
   } catch (e: any) {
     console.log("An error occured here", e.message);
     throw new Error(e);
@@ -25,9 +39,9 @@ export async function POST(request: NextRequest, response: NextResponse) {
     try{
         connectToDB()
         const requestBody = await request.json()
+        requestBody.reference = session?.user?.sub
         const newCaretaker = new Caretaker(requestBody)
         await newCaretaker.save();
-        // if(!newCaretaker) return response.status
         return NextResponse.json({caretaker: newCaretaker}, {status: 201})
     } catch(e: any) {
         return NextResponse.json({message: e.message},{ status: 400 });

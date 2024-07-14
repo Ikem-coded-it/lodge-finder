@@ -3,7 +3,6 @@ import { inter } from "@/app/ui/font";
 import "./globals.css";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import "@radix-ui/themes/styles.css";
-import Toast from "@/app/ui/components/Toast";
 
 export const metadata: Metadata = {
   title: {

@@ -5,11 +5,11 @@ import { FaRegLightbulb } from "react-icons/fa6";
 import { CiTrash } from "react-icons/ci";
 
 interface IExtraInfo {
-  hasBackupPower: "yes" | "no" | undefined;
-  hasRunningWater: "yes" | "no" | undefined;
-  hasSecurity: "yes" | "no" | undefined;
-  sanitationBill: number | undefined;
-  lightBill: number | undefined;
+  hasBackupPower?: "yes" | "no" | undefined;
+  hasRunningWater?: "yes" | "no" | undefined;
+  hasSecurity?: "yes" | "no" | undefined;
+  sanitationBill?: number | undefined;
+  lightBill?: number | undefined;
 }
 
 export default function ExtraInfo({
