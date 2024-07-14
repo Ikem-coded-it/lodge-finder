@@ -5,7 +5,7 @@ import { AxiosError } from "axios";
 class CaretakerService {
     async me() {
         try {
-            const response = await $http.get("/api/caretaker/me")
+            const response = await $http.get("/api/caretaker?query=me")
             if(response?.status == 200) return response?.data
         } catch (error: any) {
             console.log(error)

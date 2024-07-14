@@ -6,6 +6,8 @@ import SearchBar from "@/app/ui/vacancies/SearchBar";
 import Testimonial from "@/app/ui/Home/Testimonial/index";
 import Location from "@/app/ui/Home/Location";
 import Footer from "@/app/ui/components/Footer";
+import Toast from "@/app/ui/components/Toast";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata: Metadata = {
   title: 'Vacancies',
@@ -26,6 +28,7 @@ export default function Layout({
       <Testimonial/>
       <Location/>
       <Footer/>
+      <Toast/>
     </Main>
   )
 }
