@@ -21,7 +21,7 @@ export interface Caretaker  {
   callNumber: String;
   imageURL?: string;
   whatsappNumber: string;
-  credits: number;
+  credits?: number;
 }
 
 export interface CaretakerLogin {
