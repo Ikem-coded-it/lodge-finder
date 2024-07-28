@@ -8,33 +8,51 @@ import Button from "@/app/ui/components/Button";
 import SliderFrame from "@/app/ui/components/SliderFrame";
 import cn from "@/app/lib/utils/cn";
 import { FaMinus } from "react-icons/fa";
-import image1 from "@/public/lodges/lodge1.png";
-import image2 from "@/public/lodges/lodge2.png";
-import image3 from "@/public/lodges/lodge3.png";
 import DisplaySlider from "../Slider-display";
-import { IVacancy } from "@/app/lib/models/vacancy";
-
-const pics = [
-  { url: image1, type: "placeholder" },
-  { url: image2, type: "placeholder" },
-  { url: image3, type: "placeholder" },
-];
+import { ILodgeImages, IVacancy } from "@/app/lib/models/vacancy";
+import { toast } from "react-toastify";
+import $http from "@/app/lib/services/$http";
+import { Dispatch, SetStateAction } from "react";
 
 // Used in the vacancies page
 export default function HorizontalLodgeCard({
   className,
   type = "vacancies_page",
   data,
+  setVacancies,
 }: {
   className?: string;
   type?: "dashboard" | "vacancies_page";
   data?: IVacancy;
+  setVacancies: Dispatch<SetStateAction<IVacancy[]>>;
 }) {
   const mergedClasses = cn(
     "min-w-full md:min-w-[405px] lg:max-w-[990px] rounded-[8px] p-[20px] gap-[20px] bg-lightGreyBg-default relative",
     className
   );
 
+  const pics = [];
+
+  const handleDelete = async () => {
+    try {
+      const res = await $http.delete(`/api/vacancy/${data?._id ?? 1}`);
+
+      if (res?.status === 200) toast.success("Vacancy deleted successfully");
+
+      setVacancies((prev) => {
+        return prev.filter((x) => x._id !== data?._id);
+      });
+    } catch (error: any) {
+      toast.error(error?.message);
+    }
+  };
+
+  for (const key in data?.images) {
+    pics.push({
+      url: data?.images[key as keyof ILodgeImages],
+      type: key,
+    });
+  }
   return (
     <div className={mergedClasses}>
       <address className="font-[500] text-[11px] text-darkFont-default flex not-italic mb-[10px]">
@@ -88,7 +106,7 @@ export default function HorizontalLodgeCard({
                     INITIAL RENT
                   </h4>
                   <p className="text-[16px] font-[800] text-darkFont-default">
-                    N150000
+                    {data?.initialRent}
                   </p>
                 </div>
 
@@ -97,7 +115,7 @@ export default function HorizontalLodgeCard({
                     SUBSEQUENT RENT
                   </h4>
                   <p className="text-[16px] font-[800] text-darkFont-default">
-                    N130000
+                    {data?.subsequentRent}
                     <span className="font-[500] text-[9px] text-lightFont-default">
                       /per year
                     </span>
@@ -114,6 +132,8 @@ export default function HorizontalLodgeCard({
           "flex h-16 w-16 justify-center items-center gap-3 text-[#f87171] absolute bottom-0 right-6",
           { hidden: type == "vacancies_page" }
         )}
+        type="button"
+        onClick={handleDelete}
       >
         <div className="h-fit w-fit p-1 bg-lightGreyBg-default rounded-[50%]">
           <FaMinus size="18px" color="#f87171" />

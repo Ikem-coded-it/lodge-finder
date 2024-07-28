@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
 import Container from "@/app/ui/components/Container";
-import Link from 'next/link';
+import Link from "next/link";
 import Button from "@/app/ui/components/Button";
 import LodgeFinderLogo from "@/app/ui/components/Nav/LodgeFinderLogo";
 import { MainMenu, CaretakerMenu } from "@/app/ui/components/Nav/Mobile";
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { ImCoinDollar } from "react-icons/im";
 import { useEffect, useState } from "react";
@@ -13,142 +13,142 @@ import caretakerService from "@/app/lib/services/caretaker.service";
 import { Caretaker } from "@/app/lib/definitions/caretaker";
 
 const links = [
-  {href: "/", text: "Home"},
-  {href: "/vacancies", text: "Vacancies"},
-  {href: "/contact-us", text: "Contact us"},
-]
+  { href: "/", text: "Home" },
+  { href: "/vacancies", text: "Vacancies" },
+  { href: "/contact-us", text: "Contact us" },
+];
 
-const navClasses = "bg-whiteBg-default fixed top-[0] left-[0] z-50 h-[60px] lg:h-[80px] w-full px-[15px] md:px-[30px] pt-[10px] flex justify-between items-center md:items-end"
+const navClasses =
+  "bg-whiteBg-default fixed top-[0] left-[0] z-50 h-[60px] lg:h-[80px] w-full px-[15px] md:px-[30px] pt-[10px] flex justify-between items-center md:items-end";
 
 export function MainNav() {
-  const pathname = usePathname()
+  const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
     <nav className={`${navClasses}`}>
-      <LodgeFinderLogo/>
+      <LodgeFinderLogo />
 
       <ul className="hidden md:flex h-full w-[287px] justify-evenly items-center">
-        {
-          links.map(link => {
-            return(
-              <li key={link.text} className="list-none text-darkFontBlue-default">
-                <Link href={link.href} className="flex flex-col gap-[5px] text-[13px]">
-                  {link.text}
-                  <div className={clsx(
-                    'active h-[3px] w-[37px]',
-                    {
-                      'bg-darkBlue-default': pathname === link.href
-                    }
-                  )}
-                  />
-                </Link>
-              </li>
-            )
-          })
-        }
+        {links.map((link) => {
+          return (
+            <li key={link.text} className="list-none text-darkFontBlue-default">
+              <Link
+                href={link.href}
+                className="flex flex-col gap-[5px] text-[13px]"
+              >
+                {link.text}
+                <div
+                  className={clsx("active h-[3px] w-[37px]", {
+                    "bg-darkBlue-default": pathname === link.href,
+                  })}
+                />
+              </Link>
+            </li>
+          );
+        })}
       </ul>
 
-      <Container fluid className="hidden md:flex h-full w-[187px] justify-between items-center">
+      <Container
+        fluid
+        className="hidden md:flex h-full w-[187px] justify-between items-center"
+      >
         <a href="/api/auth/login">
-          <Button 
-          text="Login"
-          className="w-[77px] h-[40px]"
-          />
+          <Button text="Login" className="w-[77px] h-[40px]" />
         </a>
 
         <Link href="/auth/proceed">
-          <Button 
-          text="Sign up"
-          bg
-          className="w-[77px] h-[40px]"
-          />
+          <Button text="Sign up" bg className="w-[77px] h-[40px]" />
         </Link>
       </Container>
 
       <div className="md:hidden h-full w-[fit-content] flex justify-center items-center">
         <Button
-        text="Menu"
-        bg
-        className="h-[37px] w-[78px]"
-        onClick={() => setOpenMenu(true)}
+          text="Menu"
+          bg
+          className="h-[37px] w-[78px]"
+          onClick={() => setOpenMenu(true)}
         />
       </div>
 
-      <MainMenu isOpen={openMenu} close={() => setOpenMenu(false)} pathname={pathname}/>
+      <MainMenu
+        isOpen={openMenu}
+        close={() => setOpenMenu(false)}
+        pathname={pathname}
+      />
     </nav>
-  )
+  );
 }
 
 export function CaretakerNav() {
-  const pathname = usePathname()
+  const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState(false);
-  const [caretaker, setCaretaker] = useState<Caretaker | null>(null)
+  const [caretaker, setCaretaker] = useState<Caretaker | null>(null);
 
-    useEffect(() => {
-        (async() => {
-            const { caretaker } = await caretakerService.me()
-            if(caretaker) setCaretaker(caretaker)
-        })()
-    }, [])
+  useEffect(() => {
+    (async () => {
+      const { caretaker } = await caretakerService.me();
+
+      if (caretaker) setCaretaker(caretaker);
+    })();
+  }, []);
 
   return (
     <nav className={`${navClasses}`}>
-      <LodgeFinderLogo/>
+      <LodgeFinderLogo />
 
       <div className="flex md:hidden gap-[2px] items-center justify-center">
-          <ImCoinDollar size="30px"/>
-          <span>{(caretaker as Caretaker)?.credits ?? 0}</span>
+        <ImCoinDollar size="30px" />
+        <span>{(caretaker as Caretaker)?.credits ?? 0}</span>
       </div>
 
       <ul className="hidden lg:flex h-full w-[287px] justify-evenly items-center">
-        {
-          links.map(link => {
-            return(
-              <li key={link.text} className="list-none text-darkFontBlue-default">
-                <Link href={link.href} className="flex flex-col gap-[5px] text-[13px]">
-                  {link.text}
-                  <div className={clsx(
-                    'active h-[3px] w-[37px]',
-                    {
-                      'bg-darkBlue-default': pathname === link.href
-                    }
-                  )}
-                  />
-                </Link>
-              </li>
-            )
-          })
-        }
+        {links.map((link) => {
+          return (
+            <li key={link.text} className="list-none text-darkFontBlue-default">
+              <Link
+                href={link.href}
+                className="flex flex-col gap-[5px] text-[13px]"
+              >
+                {link.text}
+                <div
+                  className={clsx("active h-[3px] w-[37px]", {
+                    "bg-darkBlue-default": pathname === link.href,
+                  })}
+                />
+              </Link>
+            </li>
+          );
+        })}
       </ul>
 
-      <Container fluid className="hidden lg:flex h-full w-[187px] justify-between items-center">
+      <Container
+        fluid
+        className="hidden lg:flex h-full w-[187px] justify-between items-center"
+      >
         <a href="/api/auth/logout">
-          <Button 
-          text="Logout"
-          className="w-[77px] h-[40px]"
-          />
+          <Button text="Logout" className="w-[77px] h-[40px]" />
         </a>
 
         <Link href="/dashboard/vacancies">
-          <Button 
-          text="Dashboard"
-          bg
-          className="w-[100px] h-[40px]"
-          />
+          <Button text="Dashboard" bg className="w-[100px] h-[40px]" />
         </Link>
       </Container>
 
       <div className="lg:hidden h-full w-[fit-content] flex justify-center items-center">
         <Button
-        text="Menu"
-        bg
-        className="h-[37px] w-[78px]"
-        onClick={() => setOpenMenu(true)}
+          text="Menu"
+          bg
+          className="h-[37px] w-[78px]"
+          onClick={() => setOpenMenu(true)}
         />
       </div>
 
-      <CaretakerMenu isOpen={openMenu} close={() => setOpenMenu(false)} pathname={pathname}/>
+      <CaretakerMenu
+        isOpen={openMenu}
+        close={() => setOpenMenu(false)}
+        pathname={pathname}
+      />
     </nav>
-  )
+  );
 }

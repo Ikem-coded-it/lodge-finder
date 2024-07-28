@@ -1,6 +1,14 @@
 import mongoose from "mongoose";
 
+export interface ILodgeImages {
+  balconyImageURL?: string;
+  bathroomImageURL?: string;
+  buildingImageURL?: string;
+  kitchenImageURL?: string;
+  roomImageURL?: string;
+}
 export interface IVacancy {
+  _id?: string;
   caretaker_sub: string;
   lodgeName: string;
   lodgeAddress: string;
@@ -9,13 +17,7 @@ export interface IVacancy {
   sanitationBill: number;
   lightBill: number;
   interests: [];
-  images: {
-    balconyImageURL?: string;
-    bathroomImageURL?: string;
-    buildingImageURL?: string;
-    kitchenImageURL?: string;
-    roomImageURL?: string;
-  };
+  images: ILodgeImages;
   hasSecurity: "yes" | "no";
   hasRunningWater: "yes" | "no";
   hasBackupPower: "yes" | "no";
