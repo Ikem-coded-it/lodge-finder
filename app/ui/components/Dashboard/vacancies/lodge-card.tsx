@@ -8,7 +8,7 @@ import { Dispatch, SetStateAction } from "react";
 type LodgeCardType = {
   className?: string;
   vacancy: IVacancy;
-  setVacancies?: Dispatch<SetStateAction<IVacancy[]>>;
+  setVacancies: Dispatch<SetStateAction<IVacancy[]>>;
 };
 
 export default function DashboardLodgeCard({

@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 import DashboardLodgeCard from "./lodge-card";
 import { toast } from "react-toastify";
 import ColorRingSpinner from "../../spinner";
+import { IVacancy } from "@/app/lib/models/vacancy";
 
 export default function DashboardVaccancies() {
-  const [vacancies, setVacancies] = useState([]);
+  const [vacancies, setVacancies] = useState<IVacancy[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
