@@ -27,9 +27,9 @@ export default function LodgesDisplay() {
         </div>
       ) : (
         <div className="flex flex-col justify-start gap-[20px] lg:overflow-y-scroll min-h-fit lg:min-h-[748px] lg:max-h-[748px] w-full">
-          {vacancies.map((vacancy) => {
+          {vacancies.map((vacancy, index) => {
             // @ts-ignore
-            return <HorizontalLodgeCard data={vacancy} />;
+            return <HorizontalLodgeCard data={vacancy} key={index} />;
           })}
         </div>
       )}
