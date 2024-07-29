@@ -6,6 +6,7 @@ import { CiTrash } from "react-icons/ci";
 import { Vacancy } from "../definitions/vacancy";
 
 export const initialVacancyValues = {
+  caretaker_sub: "",
   lodgeName: "",
   lodgeAddress: "",
   initialRent: "",

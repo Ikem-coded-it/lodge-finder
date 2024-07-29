@@ -3,7 +3,7 @@ import Sidebar from "../ui/components/Dashboard/sidebar";
 import HideNavInDesktop from "../ui/components/Dashboard/hide-menu";
 import DashboardVacanciesHeader from "../ui/components/Dashboard/vacancies/header";
 import Toast from "@/app/ui/components/Toast";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "Your dashboard",
@@ -14,7 +14,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   return (
     <>
       <HideNavInDesktop />
@@ -26,7 +25,7 @@ export default async function RootLayout({
         <section className="grow min-h-screen max-h-screen bg-lightGreyBg-default pt-[80px] lg:pt-0 px-[10px] md:px-[30px] overflow-y-auto">
           <DashboardVacanciesHeader />
           {children}
-          <Toast/>
+          <Toast />
         </section>
       </div>
     </>

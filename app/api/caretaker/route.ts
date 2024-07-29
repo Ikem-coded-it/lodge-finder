@@ -5,8 +5,8 @@ import { getSession } from "@auth0/nextjs-auth0";
 
 export async function GET(request: NextRequest, response: NextResponse) {
   try {
-    const searchParams = request.nextUrl.searchParams
-    const query = searchParams.get('query')
+    const searchParams = request.nextUrl.searchParams;
+    const query = searchParams.get("query");
 
     if (query == "all") {
       await connectToDB();
@@ -17,12 +17,19 @@ export async function GET(request: NextRequest, response: NextResponse) {
     }
 
     if (query == "me") {
-      const session = await getSession()
+      const session = await getSession();
+
       await connectToDB();
-      const caretaker = await Caretaker.findOne({reference: session?.user?.sub})
-      if(!caretaker) return NextResponse.json({message: "Caretaker not found"},{ status: 404 });
+      const caretaker = await Caretaker.findOne({
+        reference: session?.user?.sub,
+      });
+      if (!caretaker)
+        return NextResponse.json(
+          { message: "Caretaker not found" },
+          { status: 404 }
+        );
       return NextResponse.json({
-          caretaker,
+        caretaker,
       });
     }
   } catch (e: any) {
@@ -32,18 +39,18 @@ export async function GET(request: NextRequest, response: NextResponse) {
 }
 
 export async function POST(request: NextRequest, response: NextResponse) {
-    const session = await getSession();
-    if (!session) {
-        return NextResponse.json({message: "Unauthorized"},{ status: 401 });
-    }
-    try{
-        connectToDB()
-        const requestBody = await request.json()
-        requestBody.reference = session?.user?.sub
-        const newCaretaker = new Caretaker(requestBody)
-        await newCaretaker.save();
-        return NextResponse.json({caretaker: newCaretaker}, {status: 201})
-    } catch(e: any) {
-        return NextResponse.json({message: e.message},{ status: 400 });
-    }
+  const session = await getSession();
+  if (!session) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
+  try {
+    connectToDB();
+    const requestBody = await request.json();
+    requestBody.reference = session?.user?.sub;
+    const newCaretaker = new Caretaker(requestBody);
+    await newCaretaker.save();
+    return NextResponse.json({ caretaker: newCaretaker }, { status: 201 });
+  } catch (e: any) {
+    return NextResponse.json({ message: e.message }, { status: 400 });
+  }
 }

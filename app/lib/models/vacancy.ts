@@ -1,6 +1,15 @@
 import mongoose from "mongoose";
 
+export interface ILodgeImages {
+  balconyImageURL?: string;
+  bathroomImageURL?: string;
+  buildingImageURL?: string;
+  kitchenImageURL?: string;
+  roomImageURL?: string;
+}
 export interface IVacancy {
+  _id?: string;
+  caretaker_sub: string;
   lodgeName: string;
   lodgeAddress: string;
   initialRent: number;
@@ -8,13 +17,7 @@ export interface IVacancy {
   sanitationBill: number;
   lightBill: number;
   interests: [];
-  images: {
-    balconyImageURL?: string;
-    bathroomImageURL?: string;
-    buildingImageURL?: string;
-    kitchenImageURL?: string;
-    roomImageURL?: string;
-  };
+  images: ILodgeImages;
   hasSecurity: "yes" | "no";
   hasRunningWater: "yes" | "no";
   hasBackupPower: "yes" | "no";
@@ -22,6 +25,11 @@ export interface IVacancy {
 
 const vacancySchema = new mongoose.Schema<IVacancy>(
   {
+    caretaker_sub: {
+      type: String,
+      trim: true,
+      required: true,
+    },
     lodgeName: {
       type: String,
       trim: true,
