@@ -7,6 +7,9 @@ import { Vacancy } from "../definitions/vacancy";
 
 export const initialVacancyValues = {
   caretaker_sub: "",
+  caretakerName: "",
+  phoneNumber: "",
+  whatsAppNumber: "",
   lodgeName: "",
   lodgeAddress: "",
   initialRent: "",

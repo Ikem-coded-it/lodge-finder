@@ -16,6 +16,7 @@ export default function DashboardVaccancies() {
       try {
         const res = await $http.get("/api/vacancy");
         setVacancies(res?.data?.data);
+        console.log("vacancies", res?.data?.data);
         setLoading(false);
       } catch (error: any) {
         toast.error(error?.response.data ?? error?.message);

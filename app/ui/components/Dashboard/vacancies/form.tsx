@@ -17,6 +17,7 @@ import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import $http from "@/app/lib/services/$http";
 import { IVacancy } from "@/app/lib/models/vacancy";
+import { useCreateVacanciesContext } from "@/app/context/create-vacancies-context";
 
 export default function VacancyForm({
   initialValues,
@@ -28,6 +29,8 @@ export default function VacancyForm({
   className?: string;
 }) {
   const router = useRouter();
+  const context = useCreateVacanciesContext();
+
   const formVacancyContainer =
     "flex flex-col items-center justify-start min-w-[320px] max-w-[320px]  md:min-w-[405px] md:max-w-[600px] lg:min-w-[990px] lg:max-w-[990px] rounded-[8px] p-[20px] gap-[20px] bg-whiteBg-default relative drop-shadow-md";
 
@@ -39,7 +42,10 @@ export default function VacancyForm({
     values: Vacancy,
     { setSubmitting }: { setSubmitting: any }
   ) => {
-    console.log(values);
+    values.caretakerName = `${context?.caretaker?.firstName} ${context?.caretaker?.lastName}`;
+    values.phoneNumber = context?.caretaker?.callNumber;
+    values.whatsAppNumber = context?.caretaker?.whatsappNumber;
+
     setSubmitting(true);
     try {
       const res = await $http.post("/api/vacancy", values);
@@ -58,7 +64,12 @@ export default function VacancyForm({
   return (
     <div className={"h-fit w-fit"}>
       <Formik
-        initialValues={initialValues}
+        initialValues={{
+          ...initialValues,
+          phoneNumber: context?.caretaker?.callNumber,
+          caretakerName: `${context?.caretaker?.firstName} ${context?.caretaker?.firstName} `,
+          whatsAppNumber: context?.caretaker?.whatsappNumber,
+        }}
         onSubmit={(values, FormikHelpers) =>
           uploadVacancy(values, { setSubmitting: FormikHelpers.setSubmitting })
         }
