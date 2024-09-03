@@ -18,7 +18,7 @@ export interface Caretaker  {
   firstName: string;
   lastName: string;
   email: string;
-  callNumber: String;
+  callNumber: string;
   imageURL?: string;
   whatsappNumber: string;
   credits?: number;
