@@ -25,6 +25,10 @@ export function MainNav() {
   const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState(false);
 
+  useEffect(() => {
+    setOpenMenu(false)
+  }, [pathname])
+
   return (
     <nav className={`${navClasses}`}>
       <LodgeFinderLogo />
@@ -87,11 +91,15 @@ export function CaretakerNav() {
 
   useEffect(() => {
     (async () => {
-      const { caretaker } = await caretakerService.me();
+      const data = await caretakerService.me();
 
-      if (caretaker) setCaretaker(caretaker);
+      if (data?.caretaker) setCaretaker(caretaker);
     })();
   }, []);
+
+  useEffect(() => {
+    setOpenMenu(false)
+  }, [pathname])
 
   return (
     <nav className={`${navClasses}`}>

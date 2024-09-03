@@ -44,6 +44,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     }
 
     const newVacancy = new Vacancy(requestBody);
+    await newVacancy.save()
 
     if (!newVacancy)
       return NextResponse.json(
