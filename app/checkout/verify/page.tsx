@@ -26,7 +26,7 @@ export default function Page({ searchParams }: {searchParams: any}) {
 
     useEffect(() => {
         verify()
-    }, [])
+    }, [verify])
 
     return (
         <Main className="w-screen p-0 m-0 h-screen relative justify-center items-center">

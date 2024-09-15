@@ -10,8 +10,12 @@ export interface ILodgeImages {
 export interface IVacancy {
   _id?: string;
   caretaker_sub: string;
+  caretakerName: string;
+  phoneNumber: string;
+  whatsAppNumber: string;
   lodgeName: string;
   lodgeAddress: string;
+  additionalInfo: string;
   initialRent: number;
   subsequentRent: number;
   sanitationBill: number;
@@ -30,6 +34,28 @@ const vacancySchema = new mongoose.Schema<IVacancy>(
       trim: true,
       required: true,
     },
+    caretakerName: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    phoneNumber: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    whatsAppNumber: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+
+    additionalInfo: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+
     lodgeName: {
       type: String,
       trim: true,

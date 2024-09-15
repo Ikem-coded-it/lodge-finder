@@ -50,7 +50,7 @@ export function MainMenu({
           lodgeHunterLinks.map(link => {
             return(
               <li key={link.text} className="list-none text-darkFontBlue-default">
-                <Link href={link.href} className="flex flex-col gap-[5px] text-[13px]">
+                <a href={link.href} className="flex flex-col gap-[5px] text-[13px]">
                   {link.text}
                   <div className={clsx(
                     'active h-[3px] w-[37px]',
@@ -59,7 +59,7 @@ export function MainMenu({
                     }
                   )}
                   />
-                </Link>
+                </a>
               </li>
             )
           })
@@ -74,7 +74,7 @@ export function MainMenu({
           />
         </a>
 
-        <Link href="/auth/proceed">
+        <a href="/auth/proceed">
           <Button 
           text="Sign up"
           bg
@@ -84,23 +84,11 @@ export function MainMenu({
             true : false
           }}
           />
-        </Link>
+        </a>
       </div>
     </section>
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 export function CaretakerMenu({
   isOpen,
@@ -136,7 +124,7 @@ export function CaretakerMenu({
           caretakerLinks.map(link => {
             return(
               <li key={link.text} className="list-none text-darkFontBlue-default w-full h-fit-content">
-                <Link href={link.href} className={clsx(
+                <a href={link.href} className={clsx(
                   "flex justify-start items-center gap-[10px] text-[13px] h-[40px] w-full pl-[10px]",
                   {
                     'bg-lightBlue-default': pathname === link.href
@@ -144,7 +132,7 @@ export function CaretakerMenu({
                 )}>
                   {link.icon}
                   {link.text}
-                </Link>
+                </a>
               </li>
             )
           })
@@ -152,10 +140,10 @@ export function CaretakerMenu({
       </ul>
 
       <div className="flex flex-col w-full gap-2 items-start justify-start pl-[28px]">
-        <Link href="/" className="flex justify-start items-center gap-[10px] text-[13px]">
+        <a href="/" className="flex justify-start items-center gap-[10px] text-[13px]">
           <IoHelpCircleOutline size="20px" />
           Help
-        </Link>
+        </a>
 
         <a href="/api/auth/logout">
           <Button

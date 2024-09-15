@@ -15,7 +15,7 @@ import { Caretaker } from "@/app/lib/definitions/caretaker";
 const links = [
   { href: "/", text: "Home" },
   { href: "/vacancies", text: "Vacancies" },
-  { href: "/contact-us", text: "Contact us" },
+  { href: "/contact-us", text: "Contact" },
 ];
 
 const navClasses =
@@ -33,7 +33,7 @@ export function MainNav() {
         {links.map((link) => {
           return (
             <li key={link.text} className="list-none text-darkFontBlue-default">
-              <Link
+              <a
                 href={link.href}
                 className="flex flex-col gap-[5px] text-[13px]"
               >
@@ -43,7 +43,7 @@ export function MainNav() {
                     "bg-darkBlue-default": pathname === link.href,
                   })}
                 />
-              </Link>
+              </a>
             </li>
           );
         })}
@@ -57,9 +57,9 @@ export function MainNav() {
           <Button text="Login" className="w-[77px] h-[40px]" />
         </a>
 
-        <Link href="/auth/proceed">
+        <a href="/auth/proceed">
           <Button text="Sign up" bg className="w-[77px] h-[40px]" />
-        </Link>
+        </a>
       </Container>
 
       <div className="md:hidden h-full w-[fit-content] flex justify-center items-center">
@@ -106,7 +106,7 @@ export function CaretakerNav() {
         {links.map((link) => {
           return (
             <li key={link.text} className="list-none text-darkFontBlue-default">
-              <Link
+              <a
                 href={link.href}
                 className="flex flex-col gap-[5px] text-[13px]"
               >
@@ -116,7 +116,7 @@ export function CaretakerNav() {
                     "bg-darkBlue-default": pathname === link.href,
                   })}
                 />
-              </Link>
+              </a>
             </li>
           );
         })}
@@ -130,9 +130,9 @@ export function CaretakerNav() {
           <Button text="Logout" className="w-[77px] h-[40px]" />
         </a>
 
-        <Link href="/dashboard/vacancies">
+        <a href="/dashboard/vacancies">
           <Button text="Dashboard" bg className="w-[100px] h-[40px]" />
-        </Link>
+        </a>
       </Container>
 
       <div className="lg:hidden h-full w-[fit-content] flex justify-center items-center">

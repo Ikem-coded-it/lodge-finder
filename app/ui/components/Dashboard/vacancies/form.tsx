@@ -14,20 +14,26 @@ import { toast } from "react-toastify";
 import ApplicationRoutes from "@/app/config/routes";
 import ColorRingSpinner from "@/app/ui/components/spinner";
 import { AxiosError } from "axios";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import $http from "@/app/lib/services/$http";
 import { IVacancy } from "@/app/lib/models/vacancy";
+import { useCreateVacanciesContext } from "@/app/context/create-vacancies-context";
 
 export default function VacancyForm({
   initialValues,
   validation,
   className,
 }: {
-  initialValues: Vacancy;
+  initialValues: Vacancy | null;
   validation: any;
   className?: string;
 }) {
   const router = useRouter();
+  const context = useCreateVacanciesContext();
+
+  // ID of a created vacancy for edit
+  const { id } = useParams();
+
   const formVacancyContainer =
     "flex flex-col items-center justify-start min-w-[320px] max-w-[320px]  md:min-w-[405px] md:max-w-[600px] lg:min-w-[990px] lg:max-w-[990px] rounded-[8px] p-[20px] gap-[20px] bg-whiteBg-default relative drop-shadow-md";
 
@@ -39,7 +45,10 @@ export default function VacancyForm({
     values: Vacancy,
     { setSubmitting }: { setSubmitting: any }
   ) => {
-    console.log(values);
+    values.caretakerName = `${context?.caretaker?.firstName} ${context?.caretaker?.lastName}`;
+    values.phoneNumber = context?.caretaker?.callNumber;
+    values.whatsAppNumber = context?.caretaker?.whatsappNumber;
+
     setSubmitting(true);
     try {
       const res = await $http.post("/api/vacancy", values);
@@ -55,12 +64,67 @@ export default function VacancyForm({
     }
   };
 
+  const editVacancy = async (
+    values: Vacancy,
+    { setSubmitting }: { setSubmitting: any }
+  ) => {
+    setSubmitting(true);
+    try {
+      // Update caretaker details
+      values.caretakerName = `${context?.caretaker?.firstName} ${context?.caretaker?.lastName}`;
+      values.phoneNumber = context?.caretaker?.callNumber;
+      values.whatsAppNumber = context?.caretaker?.whatsappNumber;
+
+      const res = await $http.put(`/api/vacancy/${id}`, values);
+
+      if (res.status === 200) {
+        toast.success("Vacancy updated successfully");
+        setSubmitting(false);
+        router.push(ApplicationRoutes.DASHBOARD.VACANCIES.VIEW);
+      }
+    } catch (error: AxiosError | any) {
+      toast.error("Failed to update vacancy");
+      console.error(error.message);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <div className={"h-fit w-fit"}>
       <Formik
-        initialValues={initialValues}
+        initialValues={{
+          id: initialValues?.id || "",
+          lodgeAddress: initialValues?.lodgeAddress || "",
+          lodgeName: initialValues?.lodgeName || "",
+          initialRent: initialValues?.initialRent || "",
+          subsequentRent: initialValues?.subsequentRent || "",
+          images: initialValues?.images || {
+            buildingImageURL: "",
+            roomImageURL: "",
+            balconyImageURL: "",
+            bathroomImageURL: "",
+            kitchenImageURL: "",
+          },
+          additionalInfo: initialValues?.additionalInfo || "",
+          caretakerName: `${context?.caretaker?.firstName || ""} ${context?.caretaker?.lastName || ""}`,
+          phoneNumber: context?.caretaker?.callNumber || "",
+          whatsAppNumber: context?.caretaker?.whatsappNumber || "",
+          // caretaker_sub: initialValues?.caretaker_sub || "",
+          hasRunningWater: initialValues?.hasRunningWater || "",
+          hasBackupPower: initialValues?.hasBackupPower || "",
+          hasSecurity: initialValues?.hasSecurity || "",
+          sanitationBill: initialValues?.sanitationBill || 0,
+          lightBill: initialValues?.lightBill || 0,
+        }}
         onSubmit={(values, FormikHelpers) =>
-          uploadVacancy(values, { setSubmitting: FormikHelpers.setSubmitting })
+          id
+            ? editVacancy(values as Vacancy, {
+                setSubmitting: FormikHelpers.setSubmitting,
+              })
+            : uploadVacancy(values as Vacancy, {
+                setSubmitting: FormikHelpers.setSubmitting,
+              })
         }
         // validationSchema={VacancySchema}
       >
@@ -80,7 +144,7 @@ export default function VacancyForm({
                 Lodge location in all CAPS
               </label>
               <div className="flex gap-1 justify-start items-start h-fit w-full">
-                <CiLocationOn size="14px" color="#000000" />
+                {/* <CiLocationOn size="14px" color="#000000" /> */}
                 <DynamicInputField
                   className="w-full"
                   name="lodgeAddress"

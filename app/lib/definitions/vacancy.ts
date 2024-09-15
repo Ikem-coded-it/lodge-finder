@@ -5,6 +5,9 @@ export type VacancyInterest = {
 
 export type Vacancy = {
   caretaker_sub?: string;
+  caretakerName?: string;
+  phoneNumber?: string;
+  whatsAppNumber?: string;
   id?: string;
   lodgeName: string;
   lodgeAddress: string;

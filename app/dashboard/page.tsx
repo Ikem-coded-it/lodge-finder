@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import { fetchAllCaretakers } from "../lib/data/caretaker";
 
 export default function Page() {

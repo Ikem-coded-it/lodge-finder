@@ -6,23 +6,28 @@ import DashboardLodgeCard from "./lodge-card";
 import { toast } from "react-toastify";
 import ColorRingSpinner from "../../spinner";
 import { IVacancy } from "@/app/lib/models/vacancy";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function DashboardVaccancies() {
+  const { user, isLoading } = useUser();
+
   const [vacancies, setVacancies] = useState<IVacancy[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
-        const res = await $http.get("/api/vacancy");
-        setVacancies(res?.data?.data);
-        setLoading(false);
+        if (!isLoading) {
+          const res = await $http.get(`/api/vacancy/${user?.sub}`);
+          setVacancies(res?.data?.data);
+          setLoading(false);
+        }
       } catch (error: any) {
         toast.error(error?.response.data ?? error?.message);
         setLoading(false);
       }
     })();
-  }, []);
+  }, [user, isLoading]);
 
   return (
     <section className="w-full h-fit flex flex-col gap-6 justify-start items-center lg:items-start">
