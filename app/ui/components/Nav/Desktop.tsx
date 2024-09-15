@@ -15,7 +15,7 @@ import { Caretaker } from "@/app/lib/definitions/caretaker";
 const links = [
   { href: "/", text: "Home" },
   { href: "/vacancies", text: "Vacancies" },
-  { href: "/contact-us", text: "Contact us" },
+  { href: "/contact-us", text: "Contact" },
 ];
 
 const navClasses =
