@@ -19,9 +19,9 @@ export default function DashboardLodgeCard({
   return (
     <div className="h-fit w-fit">
       <div className=" flex justify-end h-[58px] w-full py-[10px] px-[15px]">
-        <Link href="/dashboard/vacancies/edit">
+        <a href={`/dashboard/vacancies/edit/${vacancy._id}`}>
           <Button className="w-[52px] h-[35px]" text="Edit" border />
-        </Link>
+        </a>
       </div>
       <HorizontalLodgeCard
         type="dashboard"

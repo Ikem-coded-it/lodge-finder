@@ -53,6 +53,14 @@ export default function HorizontalLodgeCard({
       type: key,
     });
   }
+
+  const vacancyDetails = {
+    caretakerName: data?.caretakerName || "",
+    phoneNumber: data?.phoneNumber || "",
+    whatsappNumber: data?.whatsAppNumber || "",
+    additionalInfo: data?.additionalInfo || "",
+  };
+
   return (
     <div className={mergedClasses}>
       <address className="font-[500] text-[11px] text-darkFont-default flex not-italic mb-[10px]">
@@ -87,7 +95,7 @@ export default function HorizontalLodgeCard({
         />
 
         <div className="flex flex-col justify-start items-start flex-1 h-[288px]">
-          <VacancyDetails />
+          <VacancyDetails vacancyDetails={vacancyDetails} />
 
           {/* Rent */}
           <SliderFrame

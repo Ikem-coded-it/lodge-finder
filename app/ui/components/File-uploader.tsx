@@ -13,10 +13,12 @@ export default function FileUploadDisplay({
   info,
   className,
   increaseSlide,
+  defaultUrl,
 }: {
   info: any;
   className?: string;
   increaseSlide?: () => void;
+  defaultUrl?: string;
 }) {
   const { setFieldValue, values, errors, handleChange, handleBlur } =
     useFormikContext<any>();
@@ -30,14 +32,6 @@ export default function FileUploadDisplay({
     handleChange(e);
     const file = e.target.files[0];
     const reader = new FileReader();
-
-    // const formData = new FormData();
-
-    // formData.append("file", file);
-
-    // (async () => {
-    //   await $http.post("/api/cloudinary", formData);
-    // })();
 
     reader.onload = (e) => {
       const fileBlob = e.target?.result;
@@ -57,14 +51,14 @@ export default function FileUploadDisplay({
           className={clsx(
             "absolute top-0 w-full h-full z-10 object-center object-cover",
             {
-              "opacity-100": file,
-              "opacity-0": !file,
+              "opacity-100": file || defaultUrl,
+              "opacity-0": !file && !defaultUrl,
             }
           )}
-          src={file as string}
+          src={(file as string) || (defaultUrl as string | undefined)}
           alt="Vacancy picture"
         />
-        <SlPicture size="25px" color="#86198f" />
+        {!file && !defaultUrl && <SlPicture size="25px" color="#86198f" />}
         <label>{info.label}</label>
         {errors?.[`images.${info.key}`] && (
           <p className="text-red-500">

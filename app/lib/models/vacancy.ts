@@ -15,6 +15,7 @@ export interface IVacancy {
   whatsAppNumber: string;
   lodgeName: string;
   lodgeAddress: string;
+  additionalInfo: string;
   initialRent: number;
   subsequentRent: number;
   sanitationBill: number;
@@ -48,6 +49,13 @@ const vacancySchema = new mongoose.Schema<IVacancy>(
       trim: true,
       required: true,
     },
+
+    additionalInfo: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+
     lodgeName: {
       type: String,
       trim: true,
