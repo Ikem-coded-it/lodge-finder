@@ -3,7 +3,7 @@
 import { ReactNode, useEffect } from "react";
 import { fetchAllCaretakers } from "../lib/data/caretaker";
 
-export default function Page({ children }: { children: ReactNode }) {
+export default function Page() {
   useEffect(() => {
     const fetchCaretaker = async () => {
       try {
