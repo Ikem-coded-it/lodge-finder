@@ -16,6 +16,7 @@ const links = [
   { href: "/", text: "Home" },
   { href: "/vacancies", text: "Vacancies" },
   { href: "/contact-us", text: "Contact Us" },
+
 ];
 
 const navClasses =
