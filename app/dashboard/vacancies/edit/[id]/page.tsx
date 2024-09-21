@@ -4,15 +4,14 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Main from "@/app/ui/components/Main";
 import VacancyForm from "@/app/ui/components/Dashboard/vacancies/form";
-import { initialVacancyValues } from "@/app/lib/store/vacancy-form";
 import DashboardHeader from "@/app/ui/components/Dashboard/header";
-import CreateVacanciesContextProvider from "@/app/context/create-vacancies-context";
 import $http from "@/app/lib/services/$http";
 import { toast } from "react-toastify";
 import ColorRingSpinner from "@/app/ui/components/spinner";
 import { IVacancy } from "@/app/lib/models/vacancy";
 import { Vacancy } from "@/app/lib/definitions/vacancy";
 import { AxiosError } from "axios";
+import CaretakerContextProvider from "@/app/context/caretaker-context";
 
 export default function Page() {
   const params = useParams();
@@ -46,7 +45,7 @@ export default function Page() {
     }
   }, [id]);
   return (
-    <CreateVacanciesContextProvider>
+    <CaretakerContextProvider>
       <Main>
         <DashboardHeader text="EDIT VACANCY" />
 
@@ -61,6 +60,6 @@ export default function Page() {
           )}
         </section>
       </Main>
-    </CreateVacanciesContextProvider>
+    </CaretakerContextProvider>
   );
 }

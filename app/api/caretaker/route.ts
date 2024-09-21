@@ -54,3 +54,33 @@ export async function POST(request: NextRequest, response: NextResponse) {
     return NextResponse.json({ message: e.message }, { status: 400 });
   }
 }
+
+export async function PUT(request: NextRequest, response: NextResponse) {
+  const session = await getSession();
+  if (!session) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
+
+  try {
+    await connectToDB();
+    const requestBody = await request.json();
+    const reference = session?.user?.sub;
+
+    const updatedCaretaker = await Caretaker.findOneAndUpdate(
+      { reference: reference },
+      requestBody,
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedCaretaker) {
+      return NextResponse.json(
+        { message: "Caretaker not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({ caretaker: updatedCaretaker }, { status: 200 });
+  } catch (e: any) {
+    return NextResponse.json({ message: e.message }, { status: 400 });
+  }
+}

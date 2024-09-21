@@ -6,13 +6,13 @@ import { FaWhatsapp } from "react-icons/fa";
 import { CiCircleInfo } from "react-icons/ci";
 import { useFormikContext } from "formik";
 import DynamicInputField from "@/app/ui/components/Form/input";
-import { useCreateVacanciesContext } from "@/app/context/create-vacancies-context";
 import { useEffect, useState } from "react";
+import { useCaretakerContext } from "@/app/context/caretaker-context";
 
 export default function CaretakerDetailsInput() {
   const { values, handleChange, handleBlur, errors, touched } =
     useFormikContext<any>();
-  const context = useCreateVacanciesContext();
+  const context = useCaretakerContext();
   const caretaker = context?.caretaker;
 
   const [loading, setLoading] = useState(true);

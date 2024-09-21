@@ -17,7 +17,7 @@ import { AxiosError } from "axios";
 import { useParams, useRouter } from "next/navigation";
 import $http from "@/app/lib/services/$http";
 import { IVacancy } from "@/app/lib/models/vacancy";
-import { useCreateVacanciesContext } from "@/app/context/create-vacancies-context";
+import { useCaretakerContext } from "@/app/context/caretaker-context";
 
 export default function VacancyForm({
   initialValues,
@@ -29,7 +29,7 @@ export default function VacancyForm({
   className?: string;
 }) {
   const router = useRouter();
-  const context = useCreateVacanciesContext();
+  const context = useCaretakerContext();
 
   // ID of a created vacancy for edit
   const { id } = useParams();
@@ -267,7 +267,7 @@ export default function VacancyForm({
             <Button
               text="Upload vacancy"
               type="submit"
-              // disabled={!isValid || isSubmitting}
+              disabled={!isValid || isSubmitting}
               bg
               className="w-[250px] h-[50px] mt-2"
             >

@@ -4,11 +4,13 @@ import { Formik } from "formik";
 import EditProfileForm from "@/app/ui/components/Dashboard/profile/edit/form";
 import caretakerSchema from "@/app/lib/schemas/caretaker";
 import { Caretaker } from "@/app/lib/definitions/caretaker";
-import { useCreateVacanciesContext } from "@/app/context/create-vacancies-context";
 import { useEffect, useState } from "react";
+import $http from "@/app/lib/services/$http";
+import { toast } from "react-toastify";
+import { useCaretakerContext } from "@/app/context/caretaker-context";
 
 export default function EditProfilePage() {
-  const context = useCreateVacanciesContext();
+  const context = useCaretakerContext();
   const [initialValues, setInitialValues] = useState<Caretaker>({
     firstName: "",
     lastName: "",
@@ -31,8 +33,22 @@ export default function EditProfilePage() {
     }
   }, [context]);
 
-  function handleSubmit(values: Caretaker) {
-    console.log(values);
+  async function handleSubmit(values: Caretaker) {
+    try {
+      const { data } = await $http.put("/api/caretaker", values);
+
+      toast.success("Profile updated successfully");
+
+      // Optionally, update the context with the new caretaker data
+      if (context && context.setCaretaker) {
+        context.setCaretaker(data.caretaker);
+      }
+    } catch (error: any) {
+      toast.error(
+        error.response?.data?.message ||
+          "An error occurred while updating the profile"
+      );
+    }
   }
 
   return (

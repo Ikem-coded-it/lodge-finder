@@ -1,6 +1,8 @@
 import {
   createContext,
+  Dispatch,
   ReactNode,
+  SetStateAction,
   useContext,
   useEffect,
   useState,
@@ -11,15 +13,15 @@ import { Caretaker } from "../lib/definitions/caretaker";
 
 type IProps = {
   caretaker: Caretaker | null;
+  setCaretaker: Dispatch<SetStateAction<Caretaker | null>>;
   loading?: boolean;
 } | null;
 
-const CreateVacanciesContext = createContext<IProps | null>(null);
+const CaretakerContext = createContext<IProps | null>(null);
 
-export const useCreateVacanciesContext = () =>
-  useContext(CreateVacanciesContext);
+export const useCaretakerContext = () => useContext(CaretakerContext);
 
-export default function CreateVacanciesContextProvider({
+export default function CaretakerContextProvider({
   children,
 }: {
   children: ReactNode;
@@ -40,11 +42,12 @@ export default function CreateVacanciesContextProvider({
 
   const value: IProps = {
     caretaker,
+    setCaretaker,
   };
 
   return (
-    <CreateVacanciesContext.Provider value={value}>
+    <CaretakerContext.Provider value={value}>
       {children}
-    </CreateVacanciesContext.Provider>
+    </CaretakerContext.Provider>
   );
 }

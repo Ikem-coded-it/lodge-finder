@@ -1,11 +1,12 @@
 "use client";
 
+import { useVacancies } from "@/app/context/vacancies-context";
 import $http from "@/app/lib/services/$http";
 import HorizontalLodgeCard from "@/app/ui/components/LodgeCard/horizontal";
 import { useEffect, useState } from "react";
 
 export default function LodgesDisplay() {
-  const [vacancies, setVacancies] = useState([]);
+  const { vacancies, setVacancies } = useVacancies();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -15,8 +16,6 @@ export default function LodgesDisplay() {
       setVacancies(res?.data?.data);
       setLoading(false);
     })();
-
-    console.log("dashboard vaccancies");
   }, []);
 
   return (

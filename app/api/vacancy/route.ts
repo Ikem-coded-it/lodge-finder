@@ -10,10 +10,20 @@ export async function GET(request: NextRequest, response: NextResponse) {
   try {
     await connectToDB();
 
-    const vaccancies = await Vacancy.find();
-    // auth0|66a652317686a649a4dc91c3
-    console.log("vaccancies", vaccancies);
-    return NextResponse.json({ data: vaccancies });
+    const { searchParams } = new URL(request.url);
+    const page = parseInt(searchParams.get("page") || "1");
+    const limit = 1; // Number of results per page
+    const skip = (page - 1) * limit;
+
+    const totalDocuments = await Vacancy.countDocuments();
+    const remainingDocuments = totalDocuments - page * limit;
+
+    const vaccancies = await Vacancy.find().skip(skip).limit(limit);
+    return NextResponse.json({
+      data: vaccancies,
+      totalDocuments,
+      remainingDocuments,
+    });
   } catch (e: any) {
     return NextResponse.json({ message: e.message }, { status: 400 });
   }
