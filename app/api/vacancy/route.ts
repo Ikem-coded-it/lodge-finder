@@ -32,14 +32,16 @@ export async function POST(request: NextRequest, response: NextResponse) {
     requestBody.caretaker_sub = session?.user?.sub;
     const images = requestBody?.images;
 
-    if (images) {
-      // for (const image in images) {
-      //   const { result } = (await cloudinaryService.upload(
-      //     images[image]
-      //   )) as any;
+    console.log("images: ", images)
 
-      //   images[image] = result.secure_url;
-      // }
+    if (images) {
+      for (const image in images) {
+        const { result } = (await cloudinaryService.upload(
+          images[image]
+        )) as any;
+
+        images[image] = result.secure_url;
+      }
 
       requestBody.images = {};
     }
