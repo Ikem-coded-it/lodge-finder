@@ -4,11 +4,11 @@ import Main from "@/app/ui/components/Main";
 import VacancyForm from "@/app/ui/components/Dashboard/vacancies/form";
 import { initialVacancyValues } from "@/app/lib/store/vacancy-form";
 import DashboardHeader from "@/app/ui/components/Dashboard/header";
-import CreateVacanciesContextProvider from "@/app/context/create-vacancies-context";
+import CaretakerContextProvider from "@/app/context/caretaker-context";
 
 export default function Page() {
   return (
-    <CreateVacanciesContextProvider>
+    <CaretakerContextProvider>
       <Main>
         <DashboardHeader text="UPLOAD VACANCY" />
 
@@ -16,6 +16,6 @@ export default function Page() {
           <VacancyForm initialValues={initialVacancyValues} validation={{}} />
         </section>
       </Main>
-    </CreateVacanciesContextProvider>
+    </CaretakerContextProvider>
   );
 }

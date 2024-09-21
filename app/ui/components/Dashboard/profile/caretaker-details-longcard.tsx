@@ -1,12 +1,12 @@
 "use client";
 
-import { useCreateVacanciesContext } from "@/app/context/create-vacancies-context";
+import { useCaretakerContext } from "@/app/context/caretaker-context";
 import DataColumn from "./data-column";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function CaretakerDetailsLongcard() {
-  const context = useCreateVacanciesContext();
+  const context = useCaretakerContext();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

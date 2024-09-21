@@ -1,6 +1,6 @@
 "use client";
 
-import CreateVacanciesContextProvider from "@/app/context/create-vacancies-context";
+import CaretakerContextProvider from "@/app/context/caretaker-context";
 
 export default function ProfileLayout({
   children,
@@ -12,6 +12,6 @@ export default function ProfileLayout({
      * This is called createVacanciesContext provider but it just holds the currently logged in caretaker details
      * Don't confuse the naming
      */
-    <CreateVacanciesContextProvider>{children}</CreateVacanciesContextProvider>
+    <CaretakerContextProvider>{children}</CaretakerContextProvider>
   );
 }

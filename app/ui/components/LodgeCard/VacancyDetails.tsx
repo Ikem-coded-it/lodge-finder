@@ -19,6 +19,7 @@ interface VacancyDetailsProps {
 export default function VacancyDetails({
   vacancyDetails,
 }: VacancyDetailsProps) {
+
   const [additionalInfoMaxLength, setAdditionalInfoMaxLength] =
     useState<number>(150);
   const [formattedAdditionalInfoText, setFormattedAdditionalInfoText] =
@@ -28,12 +29,12 @@ export default function VacancyDetails({
   const toggleExpandAdditionalInfo = () => {
     additionalInfoMaxLength !== 150
       ? setAdditionalInfoMaxLength(150)
-      : setAdditionalInfoMaxLength(vacancyDetails?.additionalInfo.length);
+      : setAdditionalInfoMaxLength(vacancyDetails?.additionalInfo?.length);
   };
 
   useEffect(() => {
     setFormattedAdditionalInfoText((): string => {
-      return vacancyDetails?.additionalInfo.length > additionalInfoMaxLength
+      return vacancyDetails?.additionalInfo?.length > additionalInfoMaxLength
         ? vacancyDetails?.additionalInfo.slice(0, additionalInfoMaxLength) +
             "..."
         : vacancyDetails?.additionalInfo;
@@ -95,14 +96,14 @@ export default function VacancyDetails({
             {formattedAdditionalInfoText}
           </p>
           <div className="w-full h-fit flex justify-end">
-            {vacancyDetails?.additionalInfo.length > 150 &&
+            {vacancyDetails?.additionalInfo?.length > 150 &&
             additionalInfoMaxLength === 150 ? (
               <Button
                 text="See more"
                 onClick={toggleExpandAdditionalInfo}
                 className="text-[10px] lg:text-[9px] lg:font-[800] w-[70px] h-[20px]"
               />
-            ) : vacancyDetails?.additionalInfo.length > 150 &&
+            ) : vacancyDetails?.additionalInfo?.length > 150 &&
               additionalInfoMaxLength > 150 ? (
               <Button
                 text="Close"
