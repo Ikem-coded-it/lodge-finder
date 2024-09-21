@@ -1,30 +1,30 @@
-import { toast } from "react-toastify";
 import { cloudinary } from "@/app/config/cloudinary";
 
 export default class CloudinaryService {
-  public async upload(fileUri: string, fileName?: string) {
-    const options = {
+  public async upload(fileUri: string, fileName?: string, options: any = {}) {
+    const defaultOptions = {
       invalidate: true,
       resource_type: "auto",
-      // filename_override: fileName,
-      folder: "lodge_finder_vaccancies", // any sub-folder name in your cloud
+      folder: "lodge_finder_vaccancies",
       use_filename: true,
+      ...options,
     };
 
-    return new Promise((resolve, reject) => {
-      cloudinary.uploader
-        //@ts-ignore
-        .upload(fileUri, options)
-        .then((result) => {
-          resolve({ success: true, result });
-        })
-        .catch((error) => {
-          reject({ success: false, error });
-        });
-    });
+    if (fileName) {
+      defaultOptions.filename_override = fileName;
+    }
+
+    try {
+      const result = await cloudinary.uploader.upload(fileUri, defaultOptions);
+      return { success: true, result };
+    } catch (error) {
+      return { success: false, error };
+    }
   }
 
-  async delete() {}
+  async delete() {
+    // Implement delete functionality
+  }
 }
 
 export const cloudinaryService = new CloudinaryService();

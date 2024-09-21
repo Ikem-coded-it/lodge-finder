@@ -6,6 +6,7 @@ import cn from "@/app/lib/utils/cn";
 import { SlPicture } from "react-icons/sl";
 import React, { useState, useEffect } from "react";
 import FileUploadDisplay from "./File-uploader";
+import { useFormikContext } from "formik";
 
 type ImageErrors =
   | {
@@ -41,6 +42,8 @@ export default function DisplaySlider({
   imageTouched?: ImageTouched;
 }) {
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
+
+  const { values = {} } = useFormikContext<any>() || {};
 
   function increaseSlide() {
     setActiveImageIndex((prev) => (prev + 1) % data.length);
@@ -104,6 +107,7 @@ export default function DisplaySlider({
                   <FileUploadDisplay
                     info={info}
                     increaseSlide={increaseSlide}
+                    defaultUrl={values?.images?.[info?.key]}
                   />
                 </div>
               );

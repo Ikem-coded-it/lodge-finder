@@ -4,6 +4,7 @@ import connectToDB from "@/app/lib/db";
 import { getSession } from "@auth0/nextjs-auth0";
 import { cloudinaryService } from "@/app/lib/services/cloudinary.service";
 import $http from "@/app/lib/services/$http";
+import { limit } from "@/app/lib/utils/plimit";
 
 export async function GET(request: NextRequest, response: NextResponse) {
   try {
@@ -30,24 +31,20 @@ export async function POST(request: NextRequest, response: NextResponse) {
 
     const requestBody = await request.json();
     requestBody.caretaker_sub = session?.user?.sub;
-    const images = requestBody?.images;
+    const images = requestBody?.images as Record<string, string>;
 
     console.log("images: ", images)
 
     if (images) {
-      for (const image in images) {
-        const { result } = (await cloudinaryService.upload(
-          images[image]
-        )) as any;
-
-        images[image] = result.secure_url;
+      for (const key in images) {
+        const { result } = await cloudinaryService.upload(images[key]);
+        images[key] = result?.secure_url as string;
       }
-
-      requestBody.images = {};
+      requestBody.images = images;
     }
 
     const newVacancy = new Vacancy(requestBody);
-    await newVacancy.save()
+    await newVacancy.save();
 
     if (!newVacancy)
       return NextResponse.json(

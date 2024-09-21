@@ -10,8 +10,8 @@ export const initialVacancyValues = {
   caretakerName: "",
   phoneNumber: "",
   whatsAppNumber: "",
+  lodgeAddress:"",
   lodgeName: "",
-  lodgeAddress: "",
   initialRent: "",
   subsequentRent: "",
   images: {
