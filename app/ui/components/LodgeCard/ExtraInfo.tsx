@@ -41,7 +41,7 @@ export default function ExtraInfo({
 
         <div className="w-[38px] h-[21px] bg-[#F0F4F8] flex justify-center items-center rounded-[50px] font-[500] text-[9px]">
           {/* YES */}
-          {hasRunningWater}
+          {hasBackupPower}
         </div>
       </div>
 

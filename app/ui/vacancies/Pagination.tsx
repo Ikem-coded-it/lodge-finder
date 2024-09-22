@@ -13,6 +13,9 @@ export default function Pagination() {
   const [next, setNext] = useState(0);
   const [maxBtn, setMaxBtn] = useState(5);
 
+  // the number of buttons available for pagination.
+  const [buttonLength, setButtonLength] = useState(0);
+
   const limit = 10;
 
   return (
@@ -24,9 +27,13 @@ export default function Pagination() {
               PAGES
             </h3>
 
-            <PaginationButtons next={next} maxBtn={maxBtn} />
+            <PaginationButtons
+              next={next}
+              maxBtn={maxBtn}
+              setButtonLength={setButtonLength}
+            />
 
-            {totalDocument > 10 && (
+            {buttonLength > 5 && (
               <ArrowButtons
                 setNext={setNext}
                 setMaxBtn={setMaxBtn}
@@ -40,7 +47,15 @@ export default function Pagination() {
   );
 }
 
-function PaginationButtons({ next, maxBtn }: { next: number; maxBtn: number }) {
+function PaginationButtons({
+  next,
+  maxBtn,
+  setButtonLength,
+}: {
+  next: number;
+  maxBtn: number;
+  setButtonLength: Dispatch<SetStateAction<number>>;
+}) {
   const { totalDocument, setVacancies, setLoading } = useVacancies();
 
   let iteratorValue;
@@ -58,6 +73,8 @@ function PaginationButtons({ next, maxBtn }: { next: number; maxBtn: number }) {
   }).map((_, i) => {
     return { text: i + 1 };
   });
+
+  setButtonLength(iteratorValue);
 
   // Function to handle pagination
   const handlePagination = async (pageNumber: number) => {

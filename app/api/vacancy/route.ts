@@ -12,7 +12,7 @@ export async function GET(request: NextRequest, response: NextResponse) {
 
     const { searchParams } = new URL(request.url);
     const page = parseInt(searchParams.get("page") || "1");
-    const limit = 1; // Number of results per page
+    const limit = 10; // Number of results per page
     const skip = (page - 1) * limit;
 
     const totalDocuments = await Vacancy.countDocuments();

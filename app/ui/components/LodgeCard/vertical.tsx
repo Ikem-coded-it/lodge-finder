@@ -37,7 +37,13 @@ export default function VerticalLodgeCard({ vacancy }: { vacancy: Vacancy }) {
 
       {/* Extra Info Slider */}
       <SliderFrame>
-        <ExtraInfo />
+        <ExtraInfo
+          hasRunningWater={vacancy?.hasRunningWater as "yes" | "no"}
+          hasSecurity={vacancy?.hasSecurity as "yes" | "no"}
+          hasBackupPower={vacancy?.hasBackupPower as "yes" | "no"}
+          sanitationBill={vacancy?.sanitationBill as number}
+          lightBill={vacancy?.lightBill as number}
+        />
       </SliderFrame>
 
       {/* Lodge Building Picture */}
