@@ -21,7 +21,7 @@ export default function EditImage() {
     }
 
     return(
-        <div className="flex flex-col justify-normal items-center gap-[10px]">
+        <div className="flex flex-col justify-normal  gap-[10px]">
             <img
             className="w-[100px] h-[100px] rounded-[50%] object-center object-cover"
             src={file ?? values.imageURL}

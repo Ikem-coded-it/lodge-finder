@@ -23,7 +23,7 @@ export default function EditProfileForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="h-full w-full flex flex-col items-center justify-start"
+      className="h-full w-full flex flex-col  items-start justify-start"
     >
       <DashboardHeader text="SET UP PROFILE">
         <Button
@@ -37,7 +37,7 @@ export default function EditProfileForm() {
         </Button>
       </DashboardHeader>
 
-      <section className="rounded-[8px] drop-shadow-md w-full min-h-[150px] max-h-fit flex flex-col lg:flex-row justify-start items-center gap-[50px] py-6 px-5 bg-whiteBg-default">
+      <section className="rounded-[8px] drop-shadow-md w-full max-w-[600px] lg:max-w-full min-h-[150px] max-h-fit flex  flex-wrap flex-col lg:flex-row justify-start lg:items-center gap-[50px] py-6 px-5 bg-whiteBg-default">
         <EditImage />
 
         <DataColumn>
@@ -50,7 +50,7 @@ export default function EditProfileForm() {
             name="firstName"
             error={errors.firstName as string}
             touched={touched.firstName as boolean}
-            className="w-[200px]"
+            className="w-full"
           />
 
           <DynamicInputField
@@ -62,7 +62,7 @@ export default function EditProfileForm() {
             name="lastName"
             error={errors.lastName as string}
             touched={touched.lastName as boolean}
-            className="w-[200px]"
+            className="w-full"
           />
         </DataColumn>
 
@@ -76,7 +76,7 @@ export default function EditProfileForm() {
             name="email"
             error={errors.email as string}
             touched={touched.email as boolean}
-            className="w-[200px]"
+            className="w-full"
           />
         </DataColumn>
 
@@ -90,7 +90,7 @@ export default function EditProfileForm() {
             name="callNumber"
             error={errors.callNumber as string}
             touched={touched.callNumber as boolean}
-            className="w-[200px]"
+            className="w-full"
             placeholder="*234..."
           />
 
@@ -103,7 +103,7 @@ export default function EditProfileForm() {
             name="whatsappNumber"
             error={errors.whatsappNumber as string}
             touched={touched.whatsappNumber as boolean}
-            className="w-[200px]"
+            className="w-full"
             placeholder="*234..."
           />
         </DataColumn>

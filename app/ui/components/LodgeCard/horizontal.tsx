@@ -91,7 +91,7 @@ export default function HorizontalLodgeCard({
         <DisplaySlider
           type="display"
           data={pics}
-          className="min-w-full md:min-w-[500px] lg:min-w-[400px] lg:max-w-[400px] h-[340px] lg:h-[380px]"
+          className="min-w-full max-w-[340px] md:min-w-[500px] lg:min-w-[400px] lg:max-w-[400px] h-[340px] lg:h-[380px]"
         />
 
         <div className="flex flex-col justify-start items-start flex-1 h-[288px]">
@@ -104,9 +104,9 @@ export default function HorizontalLodgeCard({
             })}
           >
             <div className="w-fit h-fit flex justify-between items-center gap-[80px]">
-              <Link href="/">
+              {/* <Link href="/">
                 <Button text="Interested" bg className="w-[89px] h-[41px]" />
-              </Link>
+              </Link> */}
 
               <div className="flex justify-start items-center gap-[20px]">
                 <div className="w-[82px] h-[39px] flex flex-col justify-start items-start gap-[8px]">

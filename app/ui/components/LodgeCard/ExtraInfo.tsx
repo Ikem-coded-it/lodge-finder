@@ -20,7 +20,7 @@ export default function ExtraInfo({
   lightBill,
 }: IExtraInfo) {
   return (
-    <div className="flex justify-start items-center gap-[15px] h-[fit-content]">
+    <div className="flex justify-start items-center gap-[15px] h-[fit-content] ">
       <div className="w-[144px] h-[fit-content] flex justify-between items-center">
         <div className="flex flex-col items-center justify-center font-[500] text-[9px] w-[70%] gap-[5px]">
           <IoWaterOutline size="18px" color="#000000" />
