@@ -39,7 +39,7 @@ export default function VacancyForm({
   const { id } = useParams();
 
   const formVacancyContainer =
-    "flex flex-col items-center justify-start min-w-[320px] max-w-[320px]  md:min-w-[405px] md:max-w-[600px] lg:min-w-[990px] lg:max-w-[990px] rounded-[8px] p-[20px] gap-[20px] bg-whiteBg-default relative drop-shadow-md";
+    "flex flex-col items-center justify-start min-w-[320px] max-w-[450px]  md:min-w-[405px] md:max-w-[600px] lg:min-w-[990px] lg:max-w-[990px] rounded-[8px] p-[20px] gap-[20px] bg-whiteBg-default relative drop-shadow-md ";
 
   const inputLabelContainerClasses =
     "flex flex-col items-start gap-[10px] h-fit w-full";
@@ -83,7 +83,7 @@ export default function VacancyForm({
   };
 
   return (
-    <div className={"h-fit w-fit"}>
+    <div className={"h-fit w-full"}>
       <Formik
         initialValues={{
           id: initialValues?.id || "",

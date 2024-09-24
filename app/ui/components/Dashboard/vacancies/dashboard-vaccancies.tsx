@@ -30,7 +30,7 @@ export default function DashboardVaccancies() {
   }, [user, isLoading]);
 
   return (
-    <section className="w-full h-fit flex flex-col gap-6 justify-start items-center lg:items-start">
+    <section className="w-full h-fit flex flex-col gap-6 justify-start max-[500px]:items-center items-start">
       {loading ? (
         <div className="fixed inset-0 bg-white flex items-center justify-center">
           <div className="flex flex-col items-center">
@@ -45,7 +45,7 @@ export default function DashboardVaccancies() {
               {vacancies.map((vacancy, index) => {
                 return (
                   <DashboardLodgeCard
-                    className="bg-whiteBg-default min-w-[320px] max-w-[320px]  md:max-w-[600px]"
+                    className="bg-whiteBg-default  min-w-[320px] max-[500px]:max-w-[350px] max-w-[450px]  md:max-w-[600px]"
                     key={index}
                     vacancy={vacancy}
                     setVacancies={setVacancies}

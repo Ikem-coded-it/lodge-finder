@@ -37,7 +37,13 @@ export default function VerticalLodgeCard({ vacancy }: { vacancy: Vacancy }) {
 
       {/* Extra Info Slider */}
       <SliderFrame>
-        <ExtraInfo />
+        <ExtraInfo
+          hasRunningWater={vacancy?.hasRunningWater as "yes" | "no"}
+          hasSecurity={vacancy?.hasSecurity as "yes" | "no"}
+          hasBackupPower={vacancy?.hasBackupPower as "yes" | "no"}
+          sanitationBill={vacancy?.sanitationBill as number}
+          lightBill={vacancy?.lightBill as number}
+        />
       </SliderFrame>
 
       {/* Lodge Building Picture */}
@@ -48,9 +54,9 @@ export default function VerticalLodgeCard({ vacancy }: { vacancy: Vacancy }) {
       {/* Rent */}
       <SliderFrame className="w-[310px] md:w-full mb-0 py-2">
         <div className="w-fit h-fit flex justify-between items-center gap-[80px]">
-          <Link href={`/vacancy/${vacancy.id}`}>
+          {/* <Link href={`/vacancy/${vacancy.id}`}>
             <Button text="Interested" bg className="w-[89px] h-[41px]" />
-          </Link>
+          </Link> */}
 
           <div className="flex justify-start items-center gap-[20px]">
             <div className="w-[82px] h-[39px] flex flex-col justify-start items-start gap-[8px]">

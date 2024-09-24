@@ -16,7 +16,7 @@ export default function CaretakerDetailsLongcard() {
   }, [context]);
 
   return (
-    <section className="rounded-[8px] drop-shadow-md w-full min-h-[150px] max-h-fit flex flex-col lg:flex-row justify-start items-center gap-[50px] py-6 px-5 bg-whiteBg-default">
+    <section className="rounded-[8px] drop-shadow-md w-full  max-w-[450px] md:max-w-full min-h-[150px] max-h-fit flex max-[500px]:flex-col flex-row justify-start items-center gap-[50px] py-6 px-5 bg-whiteBg-default">
       {loading ? (
         <p>Loading caretaker details...</p>
       ) : (

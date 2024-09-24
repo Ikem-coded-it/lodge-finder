@@ -10,7 +10,7 @@ export default withPageAuthRequired(
   async function Page() {
     return (
       <Main>
-        <DashboardHeader text="UPLOADED VACANCIES (4)">
+        <DashboardHeader text="UPLOADED VACANCIES">
           <a href="/dashboard/vacancies/create">
             <Button text="New vacancy" bg className="w-[125px] h-[38px] gap-1">
               <GoPlus size="18px" />

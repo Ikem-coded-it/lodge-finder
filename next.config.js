@@ -4,6 +4,7 @@ const nextConfig = {
     domains: ["lh3.googleusercontent.com"],
 
     remotePatterns: [
+      { protocol: "https", hostname: "*" },
       {
         hostname: "s.gravatar.com",
       },
