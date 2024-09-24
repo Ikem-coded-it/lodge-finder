@@ -48,6 +48,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     const requestBody = await request.json();
     requestBody.reference = session?.user?.sub;
     const newCaretaker = new Caretaker(requestBody);
+    newCaretaker.credits = 3; // 3 free credits for new caretakers
     await newCaretaker.save();
     return NextResponse.json({ caretaker: newCaretaker }, { status: 201 });
   } catch (e: any) {

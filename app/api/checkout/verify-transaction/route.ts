@@ -42,18 +42,21 @@ export async function POST (request: NextRequest, response: NextResponse) {
 
         const packagePlan = packages.find(x => x?.id == updatedTransaction?.packageId)
 
+        if(!packagePlan) {
+            return NextResponse.json({message: "Credit plan not found"}, {status: 404})
+        }
+
         const caretaker = await Caretaker.findOne({reference: session?.user?.sub})
         if(!caretaker) {
             return NextResponse.json({message: "Caretaker not found"}, {status: 404})
         }
-        await Caretaker.updateOne(
-            {reference: session?.user?.sub},
-            {credits: caretaker?.credits + packagePlan?.credits}
-        )
+        caretaker.credits += packagePlan?.credits
+        await caretaker.save()
 
         return NextResponse.json({
             message: "success",
             transaction: updatedTransaction,
+            credits: caretaker?.credits
         }, {status: 200})
     } catch (e: any) {
         return NextResponse.json({message: e.message},{ status: 400 })

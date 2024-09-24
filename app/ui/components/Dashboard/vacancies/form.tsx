@@ -18,6 +18,8 @@ import { useParams, useRouter } from "next/navigation";
 import $http from "@/app/lib/services/$http";
 import { IVacancy } from "@/app/lib/models/vacancy";
 import { useCaretakerContext } from "@/app/context/caretaker-context";
+import CreateVacancyModal from "./create-vacancy-modal";
+import { useState } from "react";
 
 export default function VacancyForm({
   initialValues,
@@ -30,6 +32,8 @@ export default function VacancyForm({
 }) {
   const router = useRouter();
   const context = useCaretakerContext();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formValues, setFormValues] = useState<Vacancy | null>(null);
 
   // ID of a created vacancy for edit
   const { id } = useParams();
@@ -48,20 +52,8 @@ export default function VacancyForm({
     values.caretakerName = `${context?.caretaker?.firstName} ${context?.caretaker?.lastName}`;
     values.phoneNumber = context?.caretaker?.callNumber;
     values.whatsAppNumber = context?.caretaker?.whatsappNumber;
-
-    setSubmitting(true);
-    try {
-      const res = await $http.post("/api/vacancy", values);
-      console.log(res);
-      if (res.status == 201) {
-        toast.success("Vacancy created successfully");
-        setSubmitting(false);
-        router.push(ApplicationRoutes.DASHBOARD.VACANCIES.VIEW);
-      }
-    } catch (error: AxiosError | any) {
-      toast.error("Something went wrong");
-      console.log(error.message);
-    }
+    setFormValues(values);
+    setIsModalOpen(true);
   };
 
   const editVacancy = async (
@@ -126,7 +118,7 @@ export default function VacancyForm({
                 setSubmitting: FormikHelpers.setSubmitting,
               })
         }
-        // validationSchema={VacancySchema}
+        validationSchema={VacancySchema}
       >
         {({
           handleSubmit,
@@ -276,6 +268,12 @@ export default function VacancyForm({
           </form>
         )}
       </Formik>
+
+      <CreateVacancyModal
+      isOpen={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+      formValues={formValues}
+      />
     </div>
   );
 }

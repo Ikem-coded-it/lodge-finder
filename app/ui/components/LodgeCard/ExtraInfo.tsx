@@ -27,7 +27,7 @@ export default function ExtraInfo({
           RUNNING WATER
         </div>
 
-        <div className="w-[38px] h-[21px] bg-[#F0F4F8] flex justify-center items-center rounded-[50px] font-[500] text-[9px]">
+        <div className="w-[38px] h-[21px] bg-[#F0F4F8] flex justify-center items-center rounded-[50px] font-[500] text-[11px]">
           {hasRunningWater}
           {/* YES */}
         </div>
@@ -39,9 +39,9 @@ export default function ExtraInfo({
           BACKUP POWER
         </div>
 
-        <div className="w-[38px] h-[21px] bg-[#F0F4F8] flex justify-center items-center rounded-[50px] font-[500] text-[9px]">
+        <div className="w-[38px] h-[21px] bg-[#F0F4F8] flex justify-center items-center rounded-[50px] font-[500] text-[11px]">
           {/* YES */}
-          {hasRunningWater}
+          {hasBackupPower}
         </div>
       </div>
 
@@ -51,7 +51,7 @@ export default function ExtraInfo({
           SECURITY
         </div>
 
-        <div className="w-[38px] h-[21px] bg-[#F0F4F8] flex justify-center items-center rounded-[50px] font-[500] text-[9px]">
+        <div className="w-[38px] h-[21px] bg-[#F0F4F8] flex justify-center items-center rounded-[50px] font-[500] text-[11px]">
           {/* YES */}
           {hasSecurity}
         </div>
@@ -63,7 +63,7 @@ export default function ExtraInfo({
           LIGHT BILL
         </div>
 
-        <div className="w-[84px] h-[21px] bg-[#F0F4F8] flex justify-center items-center rounded-[50px] font-[500] text-[9px]">
+        <div className="w-fit h-[21px] bg-[#F0F4F8] flex justify-center items-center rounded-[50px] font-[500] text-[11px]">
           {lightBill}/per month
         </div>
       </div>
@@ -74,7 +74,7 @@ export default function ExtraInfo({
           SANITATION BILL
         </div>
 
-        <div className="w-[84px] h-[21px] bg-[#F0F4F8] flex justify-center items-center rounded-[50px] font-[500] text-[9px]">
+        <div className="w-fit h-[21px] bg-[#F0F4F8] flex justify-center items-center rounded-[50px] font-[500] text-[11px]">
           {sanitationBill}/per month
         </div>
       </div>
