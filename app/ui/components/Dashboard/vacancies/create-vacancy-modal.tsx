@@ -1,9 +1,11 @@
+'use client'
+
 import Modal from "@/app/ui/components/Modal";
 import { Vacancy } from "@/app/lib/definitions/vacancy";
 import ApplicationRoutes from "@/app/config/routes";
 import $http from "@/app/lib/services/$http";
 import { AxiosError } from "axios";
-import router from "next/router";
+import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { ImCoinDollar } from "react-icons/im";
@@ -16,6 +18,7 @@ export default function CreateVacancyModal({ isOpen, onClose, formValues }: {
     onClose: () => void,
     formValues: Vacancy | null
 }) {
+    const router = useRouter();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleSubmit = async () => {
@@ -30,9 +33,9 @@ export default function CreateVacancyModal({ isOpen, onClose, formValues }: {
               toast.error(res?.data?.message);
             }
         } catch (error: AxiosError | any) {
+            console.log("error", error);
             const message = error?.response?.data?.message || "Something went wrong";
             toast.error(message);
-            console.log("error", error);
         } finally {
             setIsSubmitting(false);
             onClose();
