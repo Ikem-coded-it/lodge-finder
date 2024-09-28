@@ -36,7 +36,7 @@ export default function OurStory() {
         </p> */}
 
         <p className="text-base text-lightFont-default">
-          Being former students of Nnamdi Azikiwe University, Awka, we witnessed how much pain students go through to find a new lodge 😖. Therefore, we decided to create a platform that would make the process easier for both students and agents or lodge caretakers who have vacancies to fill.
+          Being former students of UNIZIK, Awka, we witnessed how much pain UNIZIK students go through to find a new lodge 😖. Therefore, we decided to create a platform that would make the process easier for both students and agents or lodge caretakers who have vacancies to fill around UNIZIK.
         </p>
 
         <p className="text-base text-lightFont-default">

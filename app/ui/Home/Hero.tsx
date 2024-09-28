@@ -25,7 +25,7 @@ export default function Hero() {
       </h1>
 
       <p className="text-lightFont-default text-[17px]">
-        No need for stressful walks under the sun to locate your new lodge. Lodge finder brings all available vacancies to you.
+        No need for stressful walks under the UNIZIK sun to locate your new lodge. Lodge finder brings all available vacancies to you.
       </p>
 
       <Container className="flex flex-col md:flex-row justify-start items-center gap-[6px] mb-[20px] lg:mb-0">

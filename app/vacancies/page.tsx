@@ -15,7 +15,7 @@ export default function Page() {
             </h2>
 
             <p className="text-[14px] text-lightFont-default">
-              Top vacancies in Ifite, Awka, Anambra State
+              Top vacancies UNIZIK, Awka, Anambra State
             </p>
           </div>
 

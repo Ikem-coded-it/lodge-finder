@@ -10,12 +10,13 @@ export const metadata: Metadata = {
     default: "Lodge Finder",
   },
   description:
-    "A platform that makes it easy to find accommodation in Ifite, Awka, Anambra State, Nigeria.",
+    "A platform that makes it easy to find accommodation around UNIZIK campus, Awka, Nigeria.",
   keywords: [
     "Lodge",
+    "hotel",
     "Ifite",
     "Awka",
-    "unizik",
+    "UNIZIK",
     "Accomodation",
     "Anambra",
     "caretaker",
