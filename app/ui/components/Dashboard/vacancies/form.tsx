@@ -110,9 +110,9 @@ export default function VacancyForm({
           phoneNumber: context?.caretaker?.callNumber || "",
           whatsAppNumber: context?.caretaker?.whatsappNumber || "",
           // caretaker_sub: initialValues?.caretaker_sub || "",
-          hasRunningWater: initialValues?.hasRunningWater || "",
-          hasBackupPower: initialValues?.hasBackupPower || "",
-          hasSecurity: initialValues?.hasSecurity || "",
+          hasRunningWater: initialValues?.hasRunningWater || "no",
+          hasBackupPower: initialValues?.hasBackupPower || "no",
+          hasSecurity: initialValues?.hasSecurity || "no",
           sanitationBill: initialValues?.sanitationBill || 0,
           lightBill: initialValues?.lightBill || 0,
         }}

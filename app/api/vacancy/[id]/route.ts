@@ -17,7 +17,9 @@ export async function GET(
 
     await connectToDB();
 
-    const vacancy = await Vacancy.find({ caretaker_sub: params.id });
+    const vacancy = await Vacancy.find({ caretaker_sub: params.id }).sort({
+      createdAt: -1,
+    });
 
     if (!vacancy) {
       return NextResponse.json(
