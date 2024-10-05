@@ -14,6 +14,9 @@ const ApplicationRoutes = {
         PROFILE: {
             VIEW: "/dashboard/profile",
             EDIT: "/dashboard/profile/edit",
+        },
+        PACKAGES: {
+            VIEW: "/dashboard/packages"
         }
     },
     VACANCIES: "/vacancies",

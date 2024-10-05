@@ -11,7 +11,25 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata: Metadata = {
   title: 'Vacancies',
-}
+  description:
+    "Browse through all available vacancies around UNIZIK campus, Awka, Nigeria.",
+  keywords: [
+    "Lodge",
+    "hotel",
+    "Ifite",
+    "Awka",
+    "UNIZIK",
+    "Accomodation",
+    "Anambra",
+    "caretaker",
+    "lodge hunter",
+    "student",
+  ],
+  metadataBase: new URL("https://lodgefinder.com.ng/vacancies"),
+  authors: [{ name: "Onubogu Ikemefuna", url: "ikemcodes.netlify.app" }],
+  creator: "Onubogu Ikemefuna",
+  publisher: "Onubogu Ikemefuna",
+};
 
 export default function Layout({
   children

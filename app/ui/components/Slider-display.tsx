@@ -78,7 +78,7 @@ export default function DisplaySlider({
                         "opacity-100": index === activeImageIndex,
                         "opacity-0": index !== activeImageIndex,
                       },
-                      "min-w-full h-full rounded-[10px] absolute transition-opacity duration-[.2s] ease-out"
+                      "min-w-full h-full rounded-[10px] absolute transition-opacity duration-[.2s] ease-out object-cover object-center"
                     )}
                   />
                 );

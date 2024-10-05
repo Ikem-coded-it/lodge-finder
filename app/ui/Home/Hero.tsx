@@ -21,11 +21,11 @@ export default function Hero() {
 
     <Container className="flex-1 bg-lightBlue-default pt-[90px] px-[60px] flex flex-col justify-start items-center gap-[50px] rounded-t-[30px] lg:rounded-t-none">
       <h1 className={`text-[59px] font-extrabold font-['Open-Sans'] text-darkFont-default ${openSans.className}`}>
-        Lodge hunting stress-free.
+        Find Lodges stress-free 😊.
       </h1>
 
       <p className="text-lightFont-default text-[17px]">
-        With Lodge Finder, finding the best lodge as a student is no longer difficult.
+        No need for stressful walks under the UNIZIK sun to locate your new lodge. Lodge finder brings all available vacancies to you.
       </p>
 
       <Container className="flex flex-col md:flex-row justify-start items-center gap-[6px] mb-[20px] lg:mb-0">

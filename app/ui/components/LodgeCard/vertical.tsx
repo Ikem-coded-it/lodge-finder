@@ -10,11 +10,11 @@ import { Vacancy } from "@/app/lib/definitions/vacancy";
 // Used in the home page "Hot" section
 export default function VerticalLodgeCard({ vacancy }: { vacancy: Vacancy }) {
   const pics = [
-    { url: vacancy.images.buildingImageURL, type: "image" },
-    { url: vacancy.images.roomImageURL, type: "image" },
-    { url: vacancy.images.balconyImageURL, type: "image" },
-    { url: vacancy.images.bathroomImageURL, type: "image" },
-    { url: vacancy.images.kitchenImageURL, type: "image" },
+    { url: vacancy?.images?.buildingImageURL, type: "image" },
+    { url: vacancy?.images?.roomImageURL, type: "image" },
+    { url: vacancy?.images?.balconyImageURL, type: "image" },
+    { url: vacancy?.images?.bathroomImageURL, type: "image" },
+    { url: vacancy?.images?.kitchenImageURL, type: "image" },
   ].filter((pic) => pic.url); // Filter out any undefined URLs
   console.log("additionalInfo", vacancy);
   const vacancyDetails = {

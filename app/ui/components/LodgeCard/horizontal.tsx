@@ -104,9 +104,13 @@ export default function HorizontalLodgeCard({
             })}
           >
             <div className="w-fit h-fit flex justify-between items-center gap-[80px]">
-              {/* <Link href="/">
-                <Button text="Interested" bg className="w-[89px] h-[41px]" />
-              </Link> */}
+              {/* {
+                type === "vacancies_page" && (     
+                  <Link href="/">
+                    <Button text="Interested" bg className="w-[89px] h-[41px]" />
+                  </Link>
+                )
+              } */}
 
               <div className="flex justify-start items-center gap-[20px]">
                 <div className="w-[82px] h-[39px] flex flex-col justify-start items-start gap-[8px]">

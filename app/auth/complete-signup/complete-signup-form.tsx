@@ -41,7 +41,7 @@ const CompleteSignupForm = ({...user}: any) => {
       setSubmitting(true)
       try {
         const res = await $http.post("/api/caretaker", values)
-        if(res.status == 201) {
+        if(res?.status == 201) {
           toast.success("Profile created successfully")
           setSubmitting(false);
           router.push(ApplicationRoutes.DASHBOARD.VACANCIES.VIEW)

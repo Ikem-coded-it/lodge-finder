@@ -16,7 +16,6 @@ const transactionSchema = new mongoose.Schema<ITransaction>({
     },
     packageId: {
         type: Number,
-        trim: true,
         required: true
     },
     amount: {

@@ -77,7 +77,7 @@ function VacancyOptionInput({
                 htmlFor={name}
                 className={cn(
                   "w-[42px] h-[21px] bg-[#F0F4F8] flex justify-center items-center rounded-[50px] font-bold text-[9px]",
-                  { "bg-lightBlue-default": optionValue === true }
+                  { "bg-[#C9E8FF]": optionValue === true }
                 )}
                 onClick={() => setOptionValue(true)}
               >
@@ -99,7 +99,7 @@ function VacancyOptionInput({
                 htmlFor={name + "2"}
                 className={cn(
                   "w-[42px] h-[21px] bg-[#F0F4F8] flex justify-center items-center rounded-[50px] font-bold text-[9px]",
-                  { "bg-lightBlue-default": optionValue === false }
+                  { "bg-[#C9E8FF]": optionValue === false }
                 )}
                 onClick={() => setOptionValue(false)}
               >

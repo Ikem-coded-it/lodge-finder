@@ -12,7 +12,17 @@ export async function POST (request: NextRequest, response: NextResponse) {
         const requestBody = await request.json()
 
         const chosenPackage = packages.find(x => x.id == requestBody?.packageId)
+
+        if(!chosenPackage) {
+            return NextResponse.json({message: "Invalid package selected"}, {status: 400})
+        }
+
         const session = await getSession();
+
+        if(!session) {
+            return NextResponse.json({message: "Unauthorized"}, {status: 401})
+        }
+
         const transaction = new Transaction({
             userId: session?.user?.sub,
             packageId: chosenPackage?.id,
@@ -33,10 +43,17 @@ export async function POST (request: NextRequest, response: NextResponse) {
             }
         );
         const authorizationUrl = response?.data?.data?.authorization_url;
-        transaction.reference = response?.data?.data?.reference;
+        const reference = response?.data?.data?.reference
+
+        if(!authorizationUrl || !reference) {
+            return NextResponse.json({message: "Failed to initialize transaction"}, {status: 400})
+        }
+
+        transaction.reference = reference;
         await transaction.save();
+
         return NextResponse.json(
-            { authorizationUrl, reference: response.data.data.reference },
+            { authorizationUrl, reference },
             {status: 201}
         )
     } catch (e: any) {

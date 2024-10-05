@@ -30,12 +30,16 @@ export default function OurStory() {
           Our Story
         </h2>
 
-        <p className="text-[14px] text-lightFont-default">
+        {/* <p className="text-[14px] text-lightFont-default">
           Lodge Finder was founded out of pity and quest to solve the frustration and pain that  students face when looking for lodges. Lodge Finder wants to bring this problem to an end by allowing students to have ample time to focus on their studies while we handle/take care of their housing challenges.
           At no cost to students.
+        </p> */}
+
+        <p className="text-base text-lightFont-default">
+          Being former students of UNIZIK, Awka, we witnessed how much pain UNIZIK students go through to find a new lodge 😖. Therefore, we decided to create a platform that would make the process easier for both students and agents or lodge caretakers who have vacancies to fill around UNIZIK.
         </p>
 
-        <p className="text-[14px] text-lightFont-default">
+        <p className="text-base text-lightFont-default">
           Love what we do and want to support us to keep this service running? We would appreciate that. No amount is too little for us.
         </p>
 

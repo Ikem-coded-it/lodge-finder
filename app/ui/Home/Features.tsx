@@ -27,11 +27,11 @@ export default function Features() {
     <Section className="flex-col md:flex-row">
       <div className="max-w-full md:max-w-[370px] lg:max-w-[506px] min-w-full md:min-w-[370px] lg:min-w-[506px] flex flex-col gap-[30px] md:gap-[50px] justify-start items-start mb-[20px] md:mb-0">
         <h2 className="font-[800] text-[30px] md:text-[35px] text-darkFont-default m-0 w-full text-left">
-          We provide you with the best lodges that match your taste. 
+          We provide you with the best lodges that match your taste.
         </h2>
 
-        <p className="text-[14px] text-lightFont-default text-left">
-          We prioritize our users experience and satisfaction. Are you an agent with lodges that students would love? Sign up now as a caretaker to get the publicity you need. 
+        <p className="text-base text-lightFont-default text-left">
+          We prioritize our users experience and satisfaction. Are you an agent or caretaker with lodges that students are looking for? Sign up now as a caretaker and upload your vacancies.
         </p>
 
         <Link href="/auth/proceed">
