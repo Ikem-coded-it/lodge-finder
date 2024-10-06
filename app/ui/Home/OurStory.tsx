@@ -2,6 +2,7 @@ import Section from "@/app/ui/Home/Section";
 import Image from "@/app/ui/components/Image";
 import Link from "next/link";
 import Button from "@/app/ui/components/Button";
+import ApplicationRoutes from "@/app/config/routes";
 
 export default function OurStory() {
   return(
@@ -35,15 +36,15 @@ export default function OurStory() {
           At no cost to students.
         </p> */}
 
-        <p className="text-base text-lightFont-default">
+        <p className="text-[14px] md:text-base text-lightFont-default">
           Being former students of UNIZIK, Awka, we witnessed how much pain UNIZIK students go through to find a new lodge 😖. Therefore, we decided to create a platform that would make the process easier for both students and agents or lodge caretakers who have vacancies to fill around UNIZIK.
         </p>
 
-        <p className="text-base text-lightFont-default">
+        <p className="text-[14px] md:text-base text-lightFont-default">
           Love what we do and want to support us to keep this service running? We would appreciate that. No amount is too little for us.
         </p>
 
-        <Link href="/">
+        <Link href={ApplicationRoutes.DONATION}>
           <Button
           border
           text="Support us"

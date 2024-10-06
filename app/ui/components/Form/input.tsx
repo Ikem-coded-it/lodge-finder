@@ -8,7 +8,7 @@ import { useState, useEffect, useRef, RefObject, ChangeEvent } from "react";
 
 type InputProps = {
   value: string | number,
-  type: "text" | "password" | "number" | "textarea" | "email",
+  type: "text" | "password" | "number" | "textarea" | "email" | string,
   onChange: ChangeEvent<any> | any,
   onBlur: any,
   label?: string,

@@ -20,7 +20,8 @@ const ApplicationRoutes = {
         }
     },
     VACANCIES: "/vacancies",
-    CONTACT_US: "/contact-us"
+    CONTACT_US: "/contact-us",
+    DONATION: "/donation"
 }
 
 export default ApplicationRoutes;
